@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "945724181793",
+    "project_id": "zoomanager",
+    "storage_bucket": "zoomanager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945724181793:android:dc07f7a54129818bc48260",
+        "android_client_info": {
+          "package_name": "com.example.zoo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7WX2U7HSPkvs_uy2KE_MXRIkXAN7cHnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
