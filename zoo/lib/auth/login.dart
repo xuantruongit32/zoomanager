@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/auth/resetPwPage.dart';
 import 'package:zoo/services/functions/google_auth_service.dart';
-import 'package:zoo/services/pages/auth/authButton.dart';
-import 'package:zoo/services/pages/auth/errorDialog.dart';
-import 'package:zoo/services/pages/auth/squareTileofAuth.dart';
-import 'package:zoo/services/pages/auth/textfieldOfauth.dart';
+import 'package:zoo/services/pages/reuseable/auth/authButton.dart';
+import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
+import 'package:zoo/services/pages/reuseable/auth/squareTileofAuth.dart';
+import 'package:zoo/services/pages/reuseable/auth/textfieldOfauth.dart';
 
 class Login extends StatefulWidget {
   Login({required this.onTap, Key? key}) : super(key: key);

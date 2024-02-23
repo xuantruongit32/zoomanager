@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:zoo/auth/authPage.dart';
 import 'package:zoo/auth/login.dart';
 import 'firebase_options.dart';
 import 'package:flutter/services.dart';
@@ -26,7 +27,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: AuthPage(),
     );
   }
 }

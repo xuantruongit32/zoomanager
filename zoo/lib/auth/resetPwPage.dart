@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gap/gap.dart';
-import 'package:zoo/services/pages/auth/authButton.dart';
-import 'package:zoo/services/pages/auth/errorDialog.dart';
-import 'package:zoo/services/pages/auth/textfieldOfauth.dart';
+import 'package:zoo/services/pages/reuseable/auth/authButton.dart';
+import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
+import 'package:zoo/services/pages/reuseable/auth/textfieldOfauth.dart';
 
 class ResetPwPage extends StatefulWidget {
 const  ResetPwPage({Key? key}) : super(key: key);
