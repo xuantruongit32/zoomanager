@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/auth/resetPwPage.dart';
 import 'package:zoo/services/functions/google_auth_service.dart';
 import 'package:zoo/services/pages/auth/authButton.dart';
 import 'package:zoo/services/pages/auth/errorDialog.dart';
@@ -74,7 +75,7 @@ class _LoginState extends State<Login> {
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Forgot password?',
                         style: TextStyle(color: Colors.blue),
                       ),
