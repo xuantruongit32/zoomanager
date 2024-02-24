@@ -6,7 +6,7 @@ import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
 import 'package:zoo/services/pages/reuseable/auth/textfieldOfauth.dart';
 
 class ResetPwPage extends StatefulWidget {
-const  ResetPwPage({Key? key}) : super(key: key);
+  const ResetPwPage({Key? key}) : super(key: key);
 
   @override
   _ResetPwPageState createState() => _ResetPwPageState();
@@ -57,7 +57,7 @@ class _ResetPwPageState extends State<ResetPwPage> {
         child: Column(
           children: [
             Image.asset(
-              'assets/images/launcher_icon-removebg.png',
+              'assets/images/logo.png',
               height: 250,
               width: 250,
             ),

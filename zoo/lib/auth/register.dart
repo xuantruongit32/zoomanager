@@ -51,7 +51,7 @@ class _RegisterState extends State<Register> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/launcher_icon-removebg.png',
+                  'assets/images/logo.png',
                   height: 250,
                   width: 250,
                 ),
@@ -80,7 +80,7 @@ class _RegisterState extends State<Register> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                 ),
                 const Gap(30),
-              const  Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
                     children: [
