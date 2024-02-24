@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:zoo/services/pages/tabs/account.dart';
 import 'package:zoo/services/pages/tabs/browse.dart';
-import 'package:zoo/services/pages/tabs/follwing.dart';
+import 'package:zoo/services/pages/tabs/following.dart';
 import 'package:zoo/services/pages/tabs/search.dart';
 
 class HomePage extends StatefulWidget {
