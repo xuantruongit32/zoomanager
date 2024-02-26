@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAq7FkAb8kxQUiAuNuVUPsG-umVrVrommQ</string>
+	<string>AIzaSyCpahhu2AcOoe8B-dqwQTzeWh__PakOAYs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>945724181793</string>
+	<string>158871115281</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.zoo</string>
 	<key>PROJECT_ID</key>
-	<string>zoomanager</string>
+	<string>zoolive-6dd02</string>
 	<key>STORAGE_BUCKET</key>
-	<string>zoomanager.appspot.com</string>
+	<string>zoolive-6dd02.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:945724181793:ios:902df111a815f8e9c48260</string>
+	<string>1:158871115281:ios:b02b3987b6ba6303b703b0</string>
 </dict>
 </plist>

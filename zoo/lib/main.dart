@@ -4,7 +4,6 @@ import 'package:zoo/auth/authPage.dart';
 import 'firebase_options.dart';
 import 'package:flutter/services.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

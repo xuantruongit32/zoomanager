@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "945724181793",
-    "project_id": "zoomanager",
-    "storage_bucket": "zoomanager.appspot.com"
+    "project_number": "158871115281",
+    "project_id": "zoolive-6dd02",
+    "storage_bucket": "zoolive-6dd02.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945724181793:android:dc07f7a54129818bc48260",
+        "mobilesdk_app_id": "1:158871115281:android:eeea007b6a3f1a40b703b0",
         "android_client_info": {
           "package_name": "com.example.zoo"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC7WX2U7HSPkvs_uy2KE_MXRIkXAN7cHnw"
+          "current_key": "AIzaSyD0SioWx6j5PpZlqCCAzfMG9Zw7YqZdjL0"
         }
       ],
       "services": {

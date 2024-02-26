@@ -44,37 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBcb0g1HLI6Fg2gYqq0UhAURjAQ-F2iyEw',
-    appId: '1:945724181793:web:6dd15761bd25d0dcc48260',
-    messagingSenderId: '945724181793',
-    projectId: 'zoomanager',
-    authDomain: 'zoomanager.firebaseapp.com',
-    storageBucket: 'zoomanager.appspot.com',
+    apiKey: 'AIzaSyBIDJ3kVB8W6C4j1oRGYrswNvYMsq881QY',
+    appId: '1:158871115281:web:bdf0d77e9d949d49b703b0',
+    messagingSenderId: '158871115281',
+    projectId: 'zoolive-6dd02',
+    authDomain: 'zoolive-6dd02.firebaseapp.com',
+    storageBucket: 'zoolive-6dd02.appspot.com',
+    measurementId: 'G-BLG84YLYVH',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC7WX2U7HSPkvs_uy2KE_MXRIkXAN7cHnw',
-    appId: '1:945724181793:android:dc07f7a54129818bc48260',
-    messagingSenderId: '945724181793',
-    projectId: 'zoomanager',
-    storageBucket: 'zoomanager.appspot.com',
+    apiKey: 'AIzaSyD0SioWx6j5PpZlqCCAzfMG9Zw7YqZdjL0',
+    appId: '1:158871115281:android:eeea007b6a3f1a40b703b0',
+    messagingSenderId: '158871115281',
+    projectId: 'zoolive-6dd02',
+    storageBucket: 'zoolive-6dd02.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAq7FkAb8kxQUiAuNuVUPsG-umVrVrommQ',
-    appId: '1:945724181793:ios:902df111a815f8e9c48260',
-    messagingSenderId: '945724181793',
-    projectId: 'zoomanager',
-    storageBucket: 'zoomanager.appspot.com',
+    apiKey: 'AIzaSyCpahhu2AcOoe8B-dqwQTzeWh__PakOAYs',
+    appId: '1:158871115281:ios:b02b3987b6ba6303b703b0',
+    messagingSenderId: '158871115281',
+    projectId: 'zoolive-6dd02',
+    storageBucket: 'zoolive-6dd02.appspot.com',
     iosBundleId: 'com.example.zoo',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAq7FkAb8kxQUiAuNuVUPsG-umVrVrommQ',
-    appId: '1:945724181793:ios:64bfc961b2171e03c48260',
-    messagingSenderId: '945724181793',
-    projectId: 'zoomanager',
-    storageBucket: 'zoomanager.appspot.com',
+    apiKey: 'AIzaSyCpahhu2AcOoe8B-dqwQTzeWh__PakOAYs',
+    appId: '1:158871115281:ios:34b4447f33195e45b703b0',
+    messagingSenderId: '158871115281',
+    projectId: 'zoolive-6dd02',
+    storageBucket: 'zoolive-6dd02.appspot.com',
     iosBundleId: 'com.example.zoo.RunnerTests',
   );
 }

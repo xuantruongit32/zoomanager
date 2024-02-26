@@ -22,7 +22,7 @@ class AuthButton extends StatelessWidget {
           child: Center(
             child: Text(
               buttonText,
-              style:const TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
