@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/services/models/house.dart';
@@ -14,7 +15,7 @@ class HousePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 300,
               child: Stack(
                 children: [
@@ -33,25 +34,29 @@ class HousePage extends StatelessWidget {
                           radius: 80,
                           backgroundImage: NetworkImage(house.des.avatar),
                         ),
+                        const Gap(10),
                         Expanded(
                           child: Column(
                             children: [
                               const Gap(25),
-                              Text(
-                                house.des.name,
-                                style: TextStyle(
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black, // Adjust text color as needed
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  house.des.name,
+                                  style: const TextStyle(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black, // Adjust text color as needed
+                                  ),
                                 ),
                               ),
-                              const Text(
-                                "Last live yesterday",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black, // Adjust text color as needed
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  house.followers.toString() + ' Followers',
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
@@ -61,6 +66,18 @@ class HousePage extends StatelessWidget {
                 ],
               ),
             ),
+            Text(
+              house.des.story,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 4,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.black54,
+              ),
+            ),
+            Row(
+              children: [TextButton.icon(onPressed: () {}, icon: Icon(Icons.heart_broken), label: Text('Follow'))],
+            )
           ],
         ),
       ),
