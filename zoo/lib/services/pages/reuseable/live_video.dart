@@ -14,43 +14,57 @@ class LiveVideo extends StatelessWidget {
         // Add onTap functionality if needed
       },
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 2,
             child: AspectRatio(
-              aspectRatio: 16 / 9, // Adjust aspect ratio as needed
+              aspectRatio: 16 / 12, // Adjust aspect ratio as needed
               child: Image.network(
                 house.des.cover,
                 fit: BoxFit.cover,
               ),
             ),
           ),
+          const Gap(10),
           Expanded(
             flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(house.des.avatar),
-                        ),
-                        const Gap(8),
-                        Text(
-                          house.des.name,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(house.des.avatar),
+                    ),
+                    const Gap(8),
+                    Text(
+                      house.des.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const Gap(8),
+                SizedBox(
+                  width: double.infinity, // Ensure the container takes full width
+                  child: Text(
+                    "House with ${house.des.num.toString()} members",
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.grey,
                     ),
                   ),
-                  Text("House with ${house.des.num.toString()} members")
-                ],
-              ),
+                ),
+                TextButton(
+                  onPressed: null,
+                  child: Text(house.des.species),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.grey),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
