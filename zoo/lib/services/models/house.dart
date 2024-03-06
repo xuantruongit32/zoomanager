@@ -1,14 +1,37 @@
 import 'package:uuid/uuid.dart';
-import 'package:zoo/services/models/des_of_house.dart';
 import 'package:zoo/services/models/species.dart';
 
 var uuid = const Uuid();
 
 class House {
-  House({required this.des, required this.online, required this.followers, required this.species}) : id = uuid.v4();
+  House(
+      {required this.name,
+      required this.online,
+      required this.followers,
+      required this.species,
+      required this.num,
+      required this.story,
+      required this.avatar,
+      required this.cover,
+      required this.video})
+      : id = uuid.v4();
   House.old(
-      {required this.des, required this.online, required this.followers, required this.id, required this.species});
-  DesOfHouse des;
+      {required this.name,
+      required this.online,
+      required this.followers,
+      required this.species,
+      required this.num,
+      required this.story,
+      required this.avatar,
+      required this.cover,
+      required this.video,
+      required this.id});
+  String name;
+  int num;
+  String story;
+  String avatar;
+  String cover;
+  String video;
   bool online;
   int followers;
   Species species;
