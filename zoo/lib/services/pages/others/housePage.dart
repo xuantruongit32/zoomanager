@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/services/models/house.dart';
+import 'package:zoo/services/pages/reuseable/follow_button.dart';
 
 class HousePage extends StatelessWidget {
   const HousePage({Key? key, required this.house}) : super(key: key);
@@ -75,8 +75,9 @@ class HousePage extends StatelessWidget {
                 color: Colors.black54,
               ),
             ),
+            const Gap(15),
             Row(
-              children: [TextButton.icon(onPressed: () {}, icon: Icon(Icons.heart_broken), label: Text('Follow'))],
+              children: [FollowButton()],
             )
           ],
         ),

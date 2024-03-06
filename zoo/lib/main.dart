@@ -10,8 +10,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) => runApp(App()));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((value) => runApp(App()));
 }
 
 class App extends StatefulWidget {
@@ -24,7 +23,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AuthPage(),
     );

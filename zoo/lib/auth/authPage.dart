@@ -4,7 +4,7 @@ import 'package:zoo/auth/login_or_register.dart';
 import 'package:zoo/services/pages/others/homePage.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({Key? key}) : super(key: key);
+  AuthPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
