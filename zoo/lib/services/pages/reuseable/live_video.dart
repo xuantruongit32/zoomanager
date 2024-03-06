@@ -59,10 +59,10 @@ class LiveVideo extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: null,
-                    child: Text(house.des.species),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.grey),
                     ),
+                    child: Text(house.species.name),
                   ),
                 ],
               ),
