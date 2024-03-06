@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/services/pages/others/housePage.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
@@ -12,6 +13,10 @@ class FollowingPage extends StatefulWidget {
 }
 
 class _FollowingPageState extends State<FollowingPage> {
+  void gotoHouse(var house) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HousePage(house: house)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,11 +29,16 @@ class _FollowingPageState extends State<FollowingPage> {
               child: Row(
                 children: [
                   for (var house in DataManager.listHouse)
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: NetworkImage(house.des.avatar),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HousePage(house: house)));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(house.des.avatar),
+                        ),
                       ),
                     ),
                 ],
@@ -49,7 +59,10 @@ class _FollowingPageState extends State<FollowingPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var house in DataManager.listHouse) LiveVideo(house: house),
+                for (var house in DataManager.listHouse)
+                  LiveVideo(
+                    house: house,
+                  ),
               ],
             ),
             const Divider(),
@@ -69,9 +82,7 @@ class _FollowingPageState extends State<FollowingPage> {
               children: [
                 for (var house in DataManager.listHouse)
                   OfflineHouse(
-                    avatarUrl: house.des.avatar,
-                    name: house.des.name,
-                    followers: house.followers,
+                    house: house,
                   ),
               ],
             ),
