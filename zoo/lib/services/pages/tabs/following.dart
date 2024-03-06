@@ -39,7 +39,7 @@ class _FollowingPageState extends State<FollowingPage> {
                         padding: const EdgeInsets.all(2.0),
                         child: CircleAvatar(
                           radius: 30,
-                          backgroundImage: NetworkImage(house.des.avatar),
+                          backgroundImage: NetworkImage(house.avatar),
                         ),
                       ),
                     ),

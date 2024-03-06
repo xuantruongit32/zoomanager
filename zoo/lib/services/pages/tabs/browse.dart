@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoo/services/pages/others/fullLiveVideoList.dart';
 import 'package:zoo/services/pages/others/speciesList.dart';
 
 class BrowsePage extends StatelessWidget {
@@ -6,6 +7,6 @@ class BrowsePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SpeciesList();
+    return SafeArea(child: FullLiveVideoList());
   }
 }

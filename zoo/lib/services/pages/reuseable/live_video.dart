@@ -21,7 +21,7 @@ class LiveVideo extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 16 / 12, // Adjust aspect ratio as needed
                 child: Image.network(
-                  house.des.cover,
+                  house.cover,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -35,11 +35,11 @@ class LiveVideo extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                        backgroundImage: NetworkImage(house.des.avatar),
+                        backgroundImage: NetworkImage(house.avatar),
                       ),
                       const Gap(8),
                       Text(
-                        house.des.name,
+                        house.name,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -50,7 +50,7 @@ class LiveVideo extends StatelessWidget {
                   SizedBox(
                     width: double.infinity, // Ensure the container takes full width
                     child: Text(
-                      "House with ${house.des.num.toString()} members",
+                      "House with ${house.num.toString()} members",
                       style: const TextStyle(
                         fontStyle: FontStyle.italic,
                         color: Colors.grey,

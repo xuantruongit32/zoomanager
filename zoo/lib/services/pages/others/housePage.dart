@@ -20,7 +20,7 @@ class HousePage extends StatelessWidget {
               child: Stack(
                 children: [
                   Image(
-                    image: NetworkImage(house.des.cover),
+                    image: NetworkImage(house.cover),
                   ),
                   // Background cover
                   // Avatar and content
@@ -32,7 +32,7 @@ class HousePage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 80,
-                          backgroundImage: NetworkImage(house.des.avatar),
+                          backgroundImage: NetworkImage(house.avatar),
                         ),
                         const Gap(10),
                         Expanded(
@@ -42,7 +42,7 @@ class HousePage extends StatelessWidget {
                               Align(
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
-                                  house.des.name,
+                                  house.name,
                                   style: const TextStyle(
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
@@ -67,7 +67,7 @@ class HousePage extends StatelessWidget {
               ),
             ),
             Text(
-              house.des.story,
+              house.story,
               overflow: TextOverflow.ellipsis,
               maxLines: 4,
               style: const TextStyle(

@@ -20,14 +20,14 @@ class OfflineHouse extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(house.des.avatar),
+              backgroundImage: NetworkImage(house.avatar),
             ),
             const Gap(10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  house.des.name,
+                  house.name,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
