@@ -17,6 +17,8 @@ class _FollowingPageState extends State<FollowingPage> {
     Navigator.push(context, MaterialPageRoute(builder: (context) => HousePage(house: house)));
   }
 
+  bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,7 +30,7 @@ class _FollowingPageState extends State<FollowingPage> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  for (var house in DataManager.listHouse)
+                  for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => HousePage(house: house)));
@@ -45,11 +47,11 @@ class _FollowingPageState extends State<FollowingPage> {
               ),
             ),
             const Gap(20),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Your Live Houses',
-                style: TextStyle(
+                checkFollowNull ? 'Your Live Houses' : 'Recommended for you',
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -59,7 +61,7 @@ class _FollowingPageState extends State<FollowingPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var house in DataManager.listHouse)
+                for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
                   LiveVideo(
                     house: house,
                   ),
@@ -80,7 +82,7 @@ class _FollowingPageState extends State<FollowingPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var house in DataManager.listHouse)
+                for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
                   OfflineHouse(
                     house: house,
                   ),
