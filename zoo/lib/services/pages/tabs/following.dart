@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
+import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FollowingPage extends StatefulWidget {
   FollowingPage({Key? key}) : super(key: key);
@@ -15,11 +17,26 @@ class _FollowingPageState extends State<FollowingPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (var house in DataManager.listHouse)
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: NetworkImage(house.des.avatar),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            const Gap(20),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Your Live Houses',
                 style: TextStyle(
@@ -28,15 +45,35 @@ class _FollowingPageState extends State<FollowingPage> {
                 ),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: DataManager.listHouse.length,
-                itemBuilder: (BuildContext ctx, int i) {
-                  return LiveVideo(
-                    house: DataManager.listHouse[i],
-                  );
-                },
+            const Gap(10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var house in DataManager.listHouse) LiveVideo(house: house),
+              ],
+            ),
+            const Divider(),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Your Offline House',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+            ),
+            const Gap(10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var house in DataManager.listHouse)
+                  OfflineHouse(
+                    avatarUrl: house.des.avatar,
+                    name: house.des.name,
+                    followers: house.followers,
+                  ),
+              ],
             ),
           ],
         ),
