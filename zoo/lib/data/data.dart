@@ -311,7 +311,8 @@ class DataManager {
       online: true,
       followers: 1701,
       species: listSpecies[1],
-      video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
+      video:
+          'https://assets.mixkit.co/videos/preview/mixkit-white-cat-lying-among-the-grasses-seen-up-close-22732-large.mp4',
     ),
   ];
 

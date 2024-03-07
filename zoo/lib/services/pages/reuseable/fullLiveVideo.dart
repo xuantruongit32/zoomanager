@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
+import 'package:zoo/services/pages/reuseable/houseLive.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FullLiveVideo extends StatelessWidget {
@@ -10,25 +12,31 @@ class FullLiveVideo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: Column(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.width / (16 / 6),
-                child: Image.network(
-                  house.cover,
-                  fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HouseLive(house: house, gifts: DataManager.listGift)));
+      },
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.width / (16 / 6),
+                  child: Image.network(
+                    house.cover,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              OfflineHouse(house: house),
-            ],
+                OfflineHouse(house: house),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

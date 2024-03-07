@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
+import 'package:zoo/services/pages/reuseable/houseLive.dart';
 
 class LiveVideo extends StatelessWidget {
   const LiveVideo({Key? key, required this.house}) : super(key: key);
@@ -12,7 +14,10 @@ class LiveVideo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HouseLive(house: house, gifts: DataManager.listGift)));
+        },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
