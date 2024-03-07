@@ -1,3 +1,4 @@
+import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/species.dart';
 
@@ -312,5 +313,28 @@ class DataManager {
       species: listSpecies[1],
       video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
     ),
+  ];
+
+  static List<Gift> listGift = [
+    Gift(
+        name: 'banana',
+        price: 10,
+        avatar: 'https://uxwing.com/wp-content/themes/uxwing/download/fruits-vegetables/banana-icon.png'),
+    Gift(
+        name: 'banana1',
+        price: 12,
+        avatar: 'https://uxwing.com/wp-content/themes/uxwing/download/fruits-vegetables/banana-icon.png'),
+    Gift(
+        name: 'banana2',
+        price: 17,
+        avatar: 'https://uxwing.com/wp-content/themes/uxwing/download/fruits-vegetables/banana-icon.png'),
+    Gift(
+        name: 'banana3',
+        price: 18,
+        avatar: 'https://uxwing.com/wp-content/themes/uxwing/download/fruits-vegetables/banana-icon.png'),
+    Gift(
+        name: 'banana4',
+        price: 15,
+        avatar: 'https://uxwing.com/wp-content/themes/uxwing/download/fruits-vegetables/banana-icon.png'),
   ];
 }

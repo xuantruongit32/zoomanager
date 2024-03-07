@@ -12,22 +12,20 @@ class FullLiveVideo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.width / (16 / 6),
-                  child: Image.network(
-                    house.cover,
-                    fit: BoxFit.cover,
-                  ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.width / (16 / 6),
+                child: Image.network(
+                  house.cover,
+                  fit: BoxFit.cover,
                 ),
-                OfflineHouse(house: house),
-              ],
-            ),
+              ),
+              OfflineHouse(house: house),
+            ],
           ),
         ),
       ],
