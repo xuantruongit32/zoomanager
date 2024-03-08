@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/services/pages/others/housePage.dart';
+import 'package:zoo/services/pages/reuseable/circle_house.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
@@ -31,18 +32,7 @@ class _FollowingPageState extends State<FollowingPage> {
               child: Row(
                 children: [
                   for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HousePage(house: house)));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(house.avatar),
-                        ),
-                      ),
-                    ),
+                    CircleHouse(house: house),
                 ],
               ),
             ),
@@ -61,7 +51,9 @@ class _FollowingPageState extends State<FollowingPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
+                for (var house in checkFollowNull
+                    ? DataManager.followList.where((house) => house.online).toList()
+                    : DataManager.recommendedList)
                   LiveVideo(
                     house: house,
                   ),
@@ -82,7 +74,9 @@ class _FollowingPageState extends State<FollowingPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
+                for (var house in checkFollowNull
+                    ? DataManager.followList.where((house) => house.online == false).toList()
+                    : DataManager.recommendedList)
                   OfflineHouse(
                     house: house,
                   ),
