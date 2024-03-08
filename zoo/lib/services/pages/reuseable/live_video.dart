@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/houseLive.dart';
 
@@ -17,58 +16,75 @@ class LiveVideo extends StatelessWidget {
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => HouseLive(house: house)));
         },
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            Expanded(
-              flex: 2,
-              child: AspectRatio(
-                aspectRatio: 16 / 12, // Adjust aspect ratio as needed
-                child: Image.network(
-                  house.cover,
-                  fit: BoxFit.cover,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Image.network(
+                      house.cover,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            const Gap(10),
-            Expanded(
-              flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+                const Gap(10),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(house.avatar),
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: NetworkImage(house.avatar),
+                          ),
+                          const Gap(8),
+                          Text(
+                            house.name,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                       const Gap(8),
-                      Text(
-                        house.name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                      SizedBox(
+                        width: double.infinity, // Ensure the container takes full width
+                        child: Text(
+                          "House with ${house.num.toString()} members",
+                          style: const TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: null,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(const Color(0xFFD2D2D2)),
+                        ),
+                        child: Text(
+                          house.species.name,
+                          style: const TextStyle(fontSize: 12, color: Colors.black87),
                         ),
                       ),
                     ],
                   ),
-                  const Gap(8),
-                  SizedBox(
-                    width: double.infinity, // Ensure the container takes full width
-                    child: Text(
-                      "House with ${house.num.toString()} members",
-                      style: const TextStyle(
-                        fontStyle: FontStyle.italic,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: null,
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.grey),
-                    ),
-                    child: Text(house.species.name),
-                  ),
-                ],
+                ),
+              ],
+            ),
+            Positioned(
+              bottom: 35,
+              left: 8,
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                ),
               ),
             ),
           ],
