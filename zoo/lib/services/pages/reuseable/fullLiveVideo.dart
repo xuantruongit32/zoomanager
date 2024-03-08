@@ -14,8 +14,7 @@ class FullLiveVideo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HouseLive(house: house, gifts: DataManager.listGift)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HouseLive(house: house)));
       },
       child: Column(
         children: [

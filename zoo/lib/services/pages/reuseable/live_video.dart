@@ -15,8 +15,7 @@ class LiveVideo extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HouseLive(house: house, gifts: DataManager.listGift)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HouseLive(house: house)));
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
