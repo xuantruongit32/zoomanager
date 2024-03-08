@@ -15,37 +15,41 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Search Page'),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                _searchQuery = value;
-                _filteredHouses = filterHouses();
-              });
-            },
-            decoration: InputDecoration(
-              hintText: 'Search...',
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value;
+                    _filteredHouses = filterHouses();
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  border: OutlineInputBorder(),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  suffixIcon: Icon(Icons.search),
+                ),
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _filteredHouses.length,
-              itemBuilder: (context, index) {
-                final house = _filteredHouses[index];
-                return Column(
-                  children: [
-                    house.online ? LiveVideo(house: house) : OfflineHouse(house: house),
-                  ],
-                );
-              },
+            Expanded(
+              child: ListView.builder(
+                itemCount: _filteredHouses.length,
+                itemBuilder: (context, index) {
+                  final house = _filteredHouses[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                    child: house.online ? LiveVideo(house: house) : OfflineHouse(house: house),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
