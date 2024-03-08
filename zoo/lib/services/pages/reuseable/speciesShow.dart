@@ -12,9 +12,7 @@ class SpeciesShow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          // Handle tap event
-        },
+        onTap: () {},
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
@@ -26,6 +24,7 @@ class SpeciesShow extends StatelessWidget {
                 offset: const Offset(0, 3),
               ),
             ],
+            color: Colors.white,
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12.0),
@@ -36,9 +35,17 @@ class SpeciesShow extends StatelessWidget {
                   flex: 2,
                   child: AspectRatio(
                     aspectRatio: 9 / 16,
-                    child: Image.network(
-                      species.avatar,
-                      fit: BoxFit.cover,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(12.0),
+                          bottomLeft: Radius.circular(12.0),
+                        ),
+                        image: DecorationImage(
+                          image: NetworkImage(species.avatar),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -46,7 +53,7 @@ class SpeciesShow extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -60,7 +67,7 @@ class SpeciesShow extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           species.des,
-                          maxLines: 3,
+                          maxLines: 10,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.grey[700],
