@@ -3,6 +3,17 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/species.dart';
 
 class DataManager {
+  static List<House> getHousesBySpeciesId(String speciesId) {
+    List<House> houses = [];
+
+    for (House house in listHouse) {
+      if (house.species.id == speciesId) {
+        houses.add(house);
+      }
+    }
+    return houses;
+  }
+
   static List<Species> listSpecies = [
     Species(
         name: 'bird2',

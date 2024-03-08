@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/data/data.dart';
 import 'package:zoo/services/pages/others/fullLiveVideoList.dart';
 import 'package:zoo/services/pages/others/speciesList.dart';
 
@@ -77,7 +78,12 @@ class _BrowsePageState extends State<BrowsePage> {
         onPageChanged: _onPageChanged,
         controller: _controller,
         scrollDirection: Axis.horizontal,
-        children: [SpeciesList(), FullLiveVideoList()],
+        children: [
+          SpeciesList(),
+          FullLiveVideoList(
+            houseList: DataManager.listHouse,
+          )
+        ],
       ),
     );
   }

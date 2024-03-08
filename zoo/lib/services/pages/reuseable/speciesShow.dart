@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/species.dart';
+import 'package:zoo/services/pages/others/fullLiveVideoList.dart';
 
 class SpeciesShow extends StatelessWidget {
   const SpeciesShow({Key? key, required this.species}) : super(key: key);
@@ -12,7 +14,14 @@ class SpeciesShow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => FullLiveVideoList(
+                        houseList: DataManager.getHousesBySpeciesId(species.id),
+                      )));
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
