@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/houseLive.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';

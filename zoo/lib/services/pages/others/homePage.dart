@@ -28,15 +28,12 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black,
         fixedColor: Colors.deepPurple,
-        showSelectedLabels: true,
+        showSelectedLabels: false,
         showUnselectedLabels: false,
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(LineIcons.heart), label: 'Following'),
-          BottomNavigationBarItem(
-              icon: Icon(LineIcons.square), label: 'Browse'),
-          BottomNavigationBarItem(
-              icon: Icon(LineIcons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(LineIcons.heart), label: 'Following'),
+          BottomNavigationBarItem(icon: Icon(LineIcons.square), label: 'Browse'),
+          BottomNavigationBarItem(icon: Icon(LineIcons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(LineIcons.user), label: 'Account'),
         ],
         currentIndex: _currentIndex,
