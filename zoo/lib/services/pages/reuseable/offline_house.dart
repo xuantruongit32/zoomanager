@@ -36,9 +36,6 @@ class OfflineHouse extends StatelessWidget {
                 const Gap(4),
                 Text(
                   'Followers: ${house.followers.toString()}',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
                 ),
               ],
             ),

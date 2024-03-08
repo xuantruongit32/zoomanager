@@ -14,24 +14,39 @@ class FullLiveVideo extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => HouseLive(house: house)));
       },
-      child: Column(
+      child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.width / (16 / 6),
-                  child: Image.network(
-                    house.cover,
-                    fit: BoxFit.cover,
-                  ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.width / (16 / 9),
+                      child: Image.network(
+                        house.cover,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    OfflineHouse(house: house),
+                  ],
                 ),
-                OfflineHouse(house: house),
-              ],
-            ),
+              ),
+            ],
           ),
+          Positioned(
+              top: 30,
+              left: 10,
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(10)),
+                child: const Text(
+                  'Live',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ))
         ],
       ),
     );

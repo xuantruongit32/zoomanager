@@ -46,7 +46,7 @@ class _BrowsePageState extends State<BrowsePage> {
             child: Text(
               'Species',
               style: TextStyle(
-                color: _selectedPage == 0 ? Colors.black : Colors.deepPurple,
+                color: _selectedPage == 0 ? Colors.deepPurple : Colors.black,
               ),
             ),
           ),
@@ -66,7 +66,7 @@ class _BrowsePageState extends State<BrowsePage> {
             child: Text(
               'Total Live House',
               style: TextStyle(
-                color: _selectedPage == 1 ? Colors.black : Colors.deepPurple,
+                color: _selectedPage == 1 ? Colors.deepPurple : Colors.black,
               ),
             ),
           ),
