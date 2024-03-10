@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/network/fire_store.dart';
 import 'package:zoo/services/pages/others/housePage.dart';
 import 'package:zoo/services/pages/reuseable/circle_house.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
@@ -14,8 +15,31 @@ class FollowingPage extends StatefulWidget {
 }
 
 class _FollowingPageState extends State<FollowingPage> {
+  void addFollow(var house) {
+    setState() {
+      DataManager.followList.add(house);
+      FireStore().updateFollowList();
+    }
+  }
+
+  void removeFollow(var house) {
+    setState() {
+      DataManager.followList.remove(house);
+      FireStore().updateFollowList();
+    }
+  }
+
   void gotoHouse(var house) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => HousePage(house: house)));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HousePage(
+          house: house,
+          addFollow: addFollow,
+          removeFollow: removeFollow,
+        ),
+      ),
+    );
   }
 
   bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
@@ -32,7 +56,10 @@ class _FollowingPageState extends State<FollowingPage> {
               child: Row(
                 children: [
                   for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
-                    CircleHouse(house: house),
+                    CircleHouse(
+                      house: house,
+                      gotoHouse: gotoHouse,
+                    ),
                 ],
               ),
             ),
@@ -78,6 +105,7 @@ class _FollowingPageState extends State<FollowingPage> {
                     ? DataManager.followList.where((house) => house.online == false).toList()
                     : DataManager.recommendedList)
                   OfflineHouse(
+                    gotoHouse: gotoHouse,
                     house: house,
                   ),
               ],

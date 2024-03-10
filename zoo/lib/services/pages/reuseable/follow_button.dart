@@ -3,7 +3,9 @@ import 'package:gap/gap.dart';
 import 'package:line_icons/line_icons.dart';
 
 class FollowButton extends StatefulWidget {
-  const FollowButton({super.key});
+  const FollowButton({super.key, required this.addFollow, required this.removeFollow});
+  final Function? addFollow;
+  final Function? removeFollow;
 
   @override
   State<FollowButton> createState() => _FollowButtonState();
@@ -19,6 +21,7 @@ class _FollowButtonState extends State<FollowButton> {
         _isFollowing
             ? showConfirmationSnackbar(context)
             : setState(() {
+                widget.addFollow;
                 _isFollowing = !_isFollowing;
               });
       },
@@ -51,11 +54,12 @@ class _FollowButtonState extends State<FollowButton> {
 
   void showConfirmationSnackbar(BuildContext context) {
     final snackBar = SnackBar(
-      content: Text('Are you sure?'),
+      content: const Text('Are you sure?'),
       action: SnackBarAction(
         label: 'Yes',
         onPressed: () {
           setState(() {
+            widget.removeFollow;
             _isFollowing = !_isFollowing;
           });
           ScaffoldMessenger.of(context).hideCurrentSnackBar();

@@ -43,7 +43,12 @@ class _SearchPageState extends State<SearchPage> {
                   final house = _filteredHouses[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                    child: house.online ? LiveVideo(house: house) : OfflineHouse(house: house),
+                    child: house.online
+                        ? LiveVideo(house: house)
+                        : OfflineHouse(
+                            house: house,
+                            gotoHouse: () {},
+                          ),
                   );
                 },
               ),

@@ -30,7 +30,10 @@ class FullLiveVideo extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    OfflineHouse(house: house),
+                    OfflineHouse(
+                      house: house,
+                      gotoHouse: () {},
+                    ),
                   ],
                 ),
               ),

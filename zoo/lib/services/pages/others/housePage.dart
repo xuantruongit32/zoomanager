@@ -4,7 +4,11 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/follow_button.dart';
 
 class HousePage extends StatelessWidget {
-  const HousePage({Key? key, required this.house}) : super(key: key);
+  const HousePage({Key? key, required this.house, required this.addFollow, required this.removeFollow})
+      : super(key: key);
+
+  final Function addFollow;
+  final Function removeFollow;
 
   final House house;
 
@@ -77,7 +81,12 @@ class HousePage extends StatelessWidget {
             ),
             const Gap(15),
             Row(
-              children: [FollowButton()],
+              children: [
+                FollowButton(
+                  removeFollow: removeFollow(house),
+                  addFollow: addFollow(house),
+                )
+              ],
             )
           ],
         ),
