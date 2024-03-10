@@ -5,9 +5,12 @@ import 'package:zoo/services/models/species.dart';
 import 'package:zoo/services/pages/others/fullLiveVideoList.dart';
 
 class SpeciesShow extends StatelessWidget {
-  const SpeciesShow({Key? key, required this.species}) : super(key: key);
+  const SpeciesShow({Key? key, required this.species, required this.addFollow, required this.removeFollow})
+      : super(key: key);
 
   final Species species;
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,15 @@ class SpeciesShow extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => FullLiveVideoList(
-                        houseList: DataManager.getHousesBySpeciesId(species.id),
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => FullLiveVideoList(
+                addFollow: addFollow,
+                removeFollow: removeFollow,
+                houseList: DataManager.getHousesBySpeciesId(species.id),
+              ),
+            ),
+          );
         },
         child: Container(
           decoration: BoxDecoration(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:zoo/services/models/house.dart';
+import 'package:zoo/services/pages/others/housePage.dart';
 
 class CircleHouse extends StatelessWidget {
-  const CircleHouse({super.key, required this.house, required this.gotoHouse});
+  const CircleHouse({super.key, required this.house, required this.addFollow, required this.removeFollow});
   final House house;
-  final Function gotoHouse;
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,12 @@ class CircleHouse extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            gotoHouse(house);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HousePage(house: house, addFollow: addFollow, removeFollow: removeFollow),
+              ),
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(2.0),

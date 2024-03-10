@@ -5,6 +5,11 @@ import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key, required this.addFollow, required this.removeFollow});
+
+  final Function addFollow;
+  final Function removeFollow;
+
   @override
   _SearchPageState createState() => _SearchPageState();
 }
@@ -28,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
                     _filteredHouses = filterHouses();
                   });
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Search...',
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -47,7 +52,8 @@ class _SearchPageState extends State<SearchPage> {
                         ? LiveVideo(house: house)
                         : OfflineHouse(
                             house: house,
-                            gotoHouse: () {},
+                            addFollow: widget.addFollow,
+                            removeFollow: widget.removeFollow,
                           ),
                   );
                 },

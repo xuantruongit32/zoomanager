@@ -4,7 +4,10 @@ import 'package:zoo/services/pages/reuseable/houseLive.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FullLiveVideo extends StatelessWidget {
-  const FullLiveVideo({super.key, required this.house});
+  const FullLiveVideo({super.key, required this.house, required this.addFollow, required this.removeFollow});
+
+  final Function addFollow;
+  final Function removeFollow;
 
   final House house;
 
@@ -32,7 +35,8 @@ class FullLiveVideo extends StatelessWidget {
                     ),
                     OfflineHouse(
                       house: house,
-                      gotoHouse: () {},
+                      addFollow: addFollow,
+                      removeFollow: removeFollow,
                     ),
                   ],
                 ),

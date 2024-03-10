@@ -5,7 +5,10 @@ import 'package:zoo/services/pages/others/fullLiveVideoList.dart';
 import 'package:zoo/services/pages/others/speciesList.dart';
 
 class BrowsePage extends StatefulWidget {
-  BrowsePage({Key? key}) : super(key: key);
+  BrowsePage({Key? key, required this.addFollow, required this.removeFollow}) : super(key: key);
+
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   _BrowsePageState createState() => _BrowsePageState();
@@ -79,9 +82,14 @@ class _BrowsePageState extends State<BrowsePage> {
         controller: _controller,
         scrollDirection: Axis.horizontal,
         children: [
-          SpeciesList(),
+          SpeciesList(
+            addFollow: widget.addFollow,
+            removeFollow: widget.removeFollow,
+          ),
           FullLiveVideoList(
             houseList: DataManager.listHouse,
+            addFollow: widget.addFollow,
+            removeFollow: widget.removeFollow,
           )
         ],
       ),

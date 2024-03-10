@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/services/models/house.dart';
+import 'package:zoo/services/pages/others/housePage.dart';
 
 class OfflineHouse extends StatelessWidget {
-  const OfflineHouse({Key? key, required this.house, required this.gotoHouse}) : super(key: key);
+  const OfflineHouse({Key? key, required this.house, required this.addFollow, required this.removeFollow})
+      : super(key: key);
 
-  final Function gotoHouse;
+  final Function addFollow;
+  final Function removeFollow;
 
   final House house;
 
@@ -15,7 +18,12 @@ class OfflineHouse extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          gotoHouse(house);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HousePage(house: house, addFollow: addFollow, removeFollow: removeFollow),
+            ),
+          );
         },
         child: Row(
           children: [

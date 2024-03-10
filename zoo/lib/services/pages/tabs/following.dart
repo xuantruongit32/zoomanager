@@ -1,47 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
-import 'package:zoo/network/fire_store.dart';
-import 'package:zoo/services/pages/others/housePage.dart';
 import 'package:zoo/services/pages/reuseable/circle_house.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FollowingPage extends StatefulWidget {
-  FollowingPage({Key? key}) : super(key: key);
+  FollowingPage({Key? key, required this.addFollow, required this.removeFollow}) : super(key: key);
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   _FollowingPageState createState() => _FollowingPageState();
 }
 
 class _FollowingPageState extends State<FollowingPage> {
-  void addFollow(var house) {
-    setState() {
-      DataManager.followList.add(house);
-      FireStore().updateFollowList();
-    }
-  }
-
-  void removeFollow(var house) {
-    setState() {
-      DataManager.followList.remove(house);
-      FireStore().updateFollowList();
-    }
-  }
-
-  void gotoHouse(var house) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HousePage(
-          house: house,
-          addFollow: addFollow,
-          removeFollow: removeFollow,
-        ),
-      ),
-    );
-  }
-
   bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
 
   @override
@@ -58,7 +31,8 @@ class _FollowingPageState extends State<FollowingPage> {
                   for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
                     CircleHouse(
                       house: house,
-                      gotoHouse: gotoHouse,
+                      addFollow: widget.addFollow,
+                      removeFollow: widget.removeFollow,
                     ),
                 ],
               ),
@@ -105,7 +79,8 @@ class _FollowingPageState extends State<FollowingPage> {
                     ? DataManager.followList.where((house) => house.online == false).toList()
                     : DataManager.recommendedList)
                   OfflineHouse(
-                    gotoHouse: gotoHouse,
+                    addFollow: widget.addFollow,
+                    removeFollow: widget.removeFollow,
                     house: house,
                   ),
               ],

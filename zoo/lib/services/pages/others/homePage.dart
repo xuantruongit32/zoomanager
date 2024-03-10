@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:zoo/data/data.dart';
+import 'package:zoo/network/fire_store.dart';
+import 'package:zoo/services/pages/others/housePage.dart';
 import 'package:zoo/services/pages/tabs/account.dart';
 import 'package:zoo/services/pages/tabs/browse.dart';
 import 'package:zoo/services/pages/tabs/following.dart';
@@ -12,14 +15,56 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void addFollow(var house) {
+    setState() {
+      DataManager.followList.add(house);
+      FireStore().updateFollowList();
+    }
+  }
+
+  void removeFollow(var house) {
+    setState() {
+      DataManager.followList.remove(house);
+      FireStore().updateFollowList();
+    }
+  }
+
+  void gotoHouse(var house) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HousePage(
+          house: house,
+          addFollow: addFollow,
+          removeFollow: removeFollow,
+        ),
+      ),
+    );
+  }
+
   var _currentIndex = 0;
 
-  final tabs = [
-    FollowingPage(),
-    BrowsePage(),
-    SearchPage(),
+  late final tabs = [
+    FollowingPage(
+      addFollow: addFollow,
+      removeFollow: removeFollow,
+    ),
+    BrowsePage(
+      addFollow: addFollow,
+      removeFollow: removeFollow,
+    ),
+    SearchPage(
+      addFollow: addFollow,
+      removeFollow: removeFollow,
+    ),
     AccountPage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
