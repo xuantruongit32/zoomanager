@@ -37,4 +37,24 @@ class FireStore {
       print('Error adding houses to followList: $e');
     }
   }
+
+  Future<void> getAllFollowedHouseFromFireStore() async {
+    try {
+      final userId = getUserId();
+
+      CollectionReference followListRef = FirebaseFirestore.instance.collection('users/$userId/followList');
+
+      QuerySnapshot querySnapshot = await followListRef.get();
+
+      List<String> houseIds = querySnapshot.docs.map((doc) => doc.id).toList();
+
+      if (houseIds.isNotEmpty) {
+        for (var house in houseIds) {
+          DataManager.followList.add(DataManager.getHouseById(house)!);
+        }
+      }
+    } catch (e) {
+      print('Error getting followed house IDs: $e');
+    }
+  }
 }
