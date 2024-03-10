@@ -16,17 +16,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   void addFollow(var house) {
-    setState() {
-      DataManager.followList.add(house);
-      FireStore().updateFollowList();
-    }
+    DataManager.followList.add(house);
+    FireStore().updateFollowList();
   }
 
   void removeFollow(var house) {
-    setState() {
-      DataManager.followList.remove(house);
-      FireStore().updateFollowList();
-    }
+    DataManager.followList.remove(house);
+    FireStore().updateFollowList();
   }
 
   void gotoHouse(var house) {

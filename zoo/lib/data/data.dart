@@ -23,6 +23,15 @@ class DataManager {
     return houses;
   }
 
+  static bool checkHouseInListFollow(String id) {
+    for (House house in followList) {
+      if (house.id == id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   static List<Species> listSpecies = [
     Species(
         name: 'bird2',
@@ -280,61 +289,7 @@ class DataManager {
       video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
     ),
   ];
-  static List<House> followList = [
-    House(
-      name: 'Cozy Cottage1',
-      num: 7,
-      story:
-          'A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.',
-      avatar:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
-      cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: false,
-      followers: 1001,
-      species: listSpecies[1],
-      video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
-    ),
-    House(
-      name: 'Cozy Cottage2',
-      num: 5,
-      story:
-          'A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.',
-      avatar:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
-      cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: true,
-      followers: 1701,
-      species: listSpecies[1],
-      video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
-    ),
-    House(
-      name: 'Cozy Cottage5',
-      num: 5,
-      story:
-          'A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.',
-      avatar:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
-      cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: false,
-      followers: 1701,
-      species: listSpecies[1],
-      video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
-    ),
-    House(
-      name: 'Cozy Cottage6',
-      num: 5,
-      story:
-          'A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.',
-      avatar:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
-      cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: false,
-      followers: 1701,
-      species: listSpecies[1],
-      video:
-          'https://assets.mixkit.co/videos/preview/mixkit-white-cat-lying-among-the-grasses-seen-up-close-22732-large.mp4',
-    ),
-  ];
+  static List<House> followList = [];
 
   static List<Gift> listGift = [
     Gift(

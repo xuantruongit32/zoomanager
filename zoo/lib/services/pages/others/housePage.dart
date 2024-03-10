@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/follow_button.dart';
 
@@ -83,6 +84,7 @@ class HousePage extends StatelessWidget {
             Row(
               children: [
                 FollowButton(
+                  isFollowing: DataManager.checkHouseInListFollow(house.id),
                   removeFollow: removeFollow(house),
                   addFollow: addFollow(house),
                 )
