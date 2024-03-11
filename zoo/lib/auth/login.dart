@@ -21,14 +21,13 @@ class _LoginState extends State<Login> {
   final passwordController = TextEditingController();
   void signUserIn() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: usernameController.text, password: passwordController.text);
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: usernameController.text, password: passwordController.text);
     } catch (e) {
       showDialog(
           context: context,
           builder: (context) {
-            return ErrorDialog(
-                errorMessage: "Failed to sign in, please try again");
+            return const ErrorDialog(errorMessage: "Failed to sign in, please try again");
           });
     }
   }
