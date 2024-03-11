@@ -15,17 +15,16 @@ class FireStore {
     }
   }
 
-  Future<void> addFollowHouseToFireStore(String id) async {
-    final userId = getUserId();
-    CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/followList');
-    await collection.add(id);
-  }
-
   Future<void> updateFollowList() async {
     try {
       final userId = getUserId();
 
       CollectionReference followListRef = FirebaseFirestore.instance.collection('users/$userId/followList');
+
+      QuerySnapshot snapshot = await followListRef.get();
+      for (DocumentSnapshot doc in snapshot.docs) {
+        await doc.reference.delete();
+      }
 
       for (House house in DataManager.followList) {
         await followListRef.doc(house.id).set({'timestamp': FieldValue.serverTimestamp()});
@@ -34,27 +33,30 @@ class FireStore {
 
       print('All houses added to followList successfully');
     } catch (e) {
-      print('Error adding houses to followList: $e');
+      print('Error updating followList: $e');
     }
   }
 
-  Future<void> getAllFollowedHouseFromFireStore() async {
+  Future<void> fetchData() async {
     try {
       final userId = getUserId();
 
       CollectionReference followListRef = FirebaseFirestore.instance.collection('users/$userId/followList');
-
       QuerySnapshot querySnapshot = await followListRef.get();
-
       List<String> houseIds = querySnapshot.docs.map((doc) => doc.id).toList();
 
-      if (houseIds.isNotEmpty) {
-        for (var house in houseIds) {
-          DataManager.followList.add(DataManager.getHouseById(house)!);
+      DataManager.followList.clear();
+
+      for (var houseId in houseIds) {
+        House? house = DataManager.getHouseById(houseId);
+        if (house != null) {
+          DataManager.followList.add(house);
         }
       }
+
+      print('Followed houses fetched successfully');
     } catch (e) {
-      print('Error getting followed house IDs: $e');
+      print('Error fetching followed houses: $e');
     }
   }
 }

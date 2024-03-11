@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/network/fire_store.dart';
 import 'package:zoo/services/pages/reuseable/circle_house.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
@@ -16,6 +17,16 @@ class FollowingPage extends StatefulWidget {
 
 class _FollowingPageState extends State<FollowingPage> {
   bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
+
+  @override
+  void initState() {
+    FireStore().fetchData().then(
+          (value) => setState(
+            () {},
+          ),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
