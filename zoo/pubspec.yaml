@@ -41,9 +41,12 @@ dependencies:
   google_sign_in: ^6.2.1
   line_icons: ^2.0.3
   uuid: ^4.3.3
-  webview_flutter: ^4.7.0
   video_player: ^2.8.3
   flick_video_player: ^0.7.0
+  cloud_firestore: ^4.15.8
+  flutter_inappwebview: ^5.8.0
+  http: ^0.13.6
+  flutter_paypal_checkout: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +73,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/icon/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
