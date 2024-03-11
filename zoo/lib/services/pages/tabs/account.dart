@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gap/gap.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:zoo/services/pages/others/depositPage.dart';
 import 'package:zoo/services/pages/reuseable/customIcon.dart';
 import 'package:zoo/services/pages/reuseable/iconButtonText.dart';
 
@@ -19,7 +20,9 @@ class AccountPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButtonText(
-                  fun: () {},
+                  fun: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage()));
+                  },
                   label: 'Donation',
                   icon: CustomIcon(imagePath: 'assets/icon/donation.png'),
                 ),
