@@ -32,7 +32,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               height: 250,
               width: 250,
             ),
-            const Gap(50),
+            const Gap(20),
             TextField(
               controller: _amountController,
               keyboardType: TextInputType.number,
@@ -42,7 +42,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 prefixIcon: Icon(Icons.attach_money),
               ),
             ),
-            const Gap(30),
+            const Gap(20),
             ElevatedButton.icon(
               onPressed: () async {
                 int amount = int.tryParse(_amountController.text) ?? 0;

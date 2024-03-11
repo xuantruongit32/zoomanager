@@ -5,58 +5,102 @@ import 'package:zoo/services/models/gift.dart';
 class GiftOptionWidget extends StatelessWidget {
   final Gift gift;
 
-  const GiftOptionWidget({super.key, required this.gift});
+  const GiftOptionWidget({Key? key, required this.gift}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTap: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Confirm Donation'),
-                content: Text('Are you sure you want to donate ${gift.name}?'),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Cancel'),
+    return InkWell(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Center(
+                child: Text(
+                  'Confirm Donation',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Donate'),
+                ),
+              ),
+              content: Text(
+                'Are you sure want to donate ${gift.name}?',
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(
+                      color: Colors.red,
+                    ),
                   ),
-                ],
-              );
-            },
-          );
-        },
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'Donate',
+                    style: TextStyle(
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(12.0),
               child: Image.network(
                 gift.avatar,
-                width: 100,
-                height: 100,
+                width: 60,
+                height: 60,
                 fit: BoxFit.cover,
               ),
             ),
-            const Gap(5),
+            const Gap(8),
             Text(
               gift.name,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
+            const Gap(4),
             Text(
-              '${gift.price}',
-              style: const TextStyle(fontSize: 14, color: Colors.grey),
+              '\$${gift.price}',
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
             ),
+            const Gap(5),
           ],
         ),
       ),

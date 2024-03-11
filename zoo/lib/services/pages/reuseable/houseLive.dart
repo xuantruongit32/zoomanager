@@ -39,13 +39,16 @@ class _HouseLiveState extends State<HouseLive> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           FlickVideoPlayer(flickManager: flickManager),
-          const Gap(10),
+          const Gap(20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: DataManager.listGift.map((gift) {
-                return GiftOptionWidget(gift: gift);
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GiftOptionWidget(gift: gift),
+                );
               }).toList(),
             ),
           ),
