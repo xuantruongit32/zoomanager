@@ -15,46 +15,53 @@ class FireStore {
     }
   }
 
-  Future<void> updateFollowList() async {
+  Future<void> addFollowedHouseToFireStore(House house) async {
     try {
       final userId = getUserId();
+      CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/data');
 
-      CollectionReference followListRef = FirebaseFirestore.instance.collection('users/$userId/followList');
-
-      QuerySnapshot snapshot = await followListRef.get();
-      for (DocumentSnapshot doc in snapshot.docs) {
-        await doc.reference.delete();
-      }
-
-      for (House house in DataManager.followList) {
-        await followListRef.doc(house.id).set({'timestamp': FieldValue.serverTimestamp()});
-        print('House with ID ${house.id} added to followList');
-      }
-
-      print('All houses added to followList successfully');
+      await collection.doc('followList').set(
+        {
+          house.id: house.name,
+        },
+        SetOptions(merge: true),
+      );
     } catch (e) {
       print('Error updating followList: $e');
+    }
+  }
+
+  Future<void> removeFollowedHouseFromFireStore(House house) async {
+    try {
+      final userId = getUserId();
+      CollectionReference collection = FirebaseFirestore.instance.collection('user/$userId/data');
+      await collection.doc('followList').update({
+        house.id: FieldValue.delete(),
+      });
+    } catch (e) {
+      print("Error: $e");
     }
   }
 
   Future<void> fetchData() async {
     try {
       final userId = getUserId();
-
-      CollectionReference followListRef = FirebaseFirestore.instance.collection('users/$userId/followList');
-      QuerySnapshot querySnapshot = await followListRef.get();
-      List<String> houseIds = querySnapshot.docs.map((doc) => doc.id).toList();
-
       DataManager.followList.clear();
 
-      for (var houseId in houseIds) {
-        House? house = DataManager.getHouseById(houseId);
-        if (house != null) {
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance.collection('users/$userId/data').doc('followList').get();
+
+      Map<String, dynamic>? followList = snapshot.data();
+
+      if (followList != null) {
+        for (var data in followList.entries) {
+          var id = data.key;
+          House house = DataManager.getHouseById(id);
+          print("HHHEHEHEHHEH ${house.id}");
+
           DataManager.followList.add(house);
         }
       }
-
-      print('Followed houses fetched successfully');
     } catch (e) {
       print('Error fetching followed houses: $e');
     }

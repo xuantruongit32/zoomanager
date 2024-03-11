@@ -19,16 +19,6 @@ class _FollowingPageState extends State<FollowingPage> {
   bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
 
   @override
-  void initState() {
-    FireStore().fetchData().then(
-          (value) => setState(
-            () {},
-          ),
-        );
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/network/fire_store.dart';
-import 'package:zoo/services/pages/others/housePage.dart';
 import 'package:zoo/services/pages/tabs/account.dart';
 import 'package:zoo/services/pages/tabs/browse.dart';
 import 'package:zoo/services/pages/tabs/following.dart';
@@ -22,25 +21,12 @@ class _HomePageState extends State<HomePage> {
 
   void addFollow(var house) {
     DataManager.followList.add(house);
-    FireStore().updateFollowList();
+    FireStore().addFollowedHouseToFireStore(house);
   }
 
   void removeFollow(var house) {
     DataManager.followList.remove(house);
-    FireStore().updateFollowList();
-  }
-
-  void gotoHouse(var house) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HousePage(
-          house: house,
-          addFollow: addFollow,
-          removeFollow: removeFollow,
-        ),
-      ),
-    );
+    FireStore().removeFollowedHouseFromFireStore(house);
   }
 
   var _currentIndex = 0;

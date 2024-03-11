@@ -9,4 +9,10 @@ class Species {
   String avatar;
   String des;
   final String id;
+
+  Species.empty()
+      : name = '',
+        avatar = '',
+        des = '',
+        id = '';
 }

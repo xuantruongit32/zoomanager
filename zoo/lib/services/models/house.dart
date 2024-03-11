@@ -26,6 +26,17 @@ class House {
       required this.cover,
       required this.video,
       required this.id});
+  House.empty()
+      : name = '',
+        id = '',
+        online = false,
+        species = Species.empty(),
+        followers = 0,
+        cover = '',
+        avatar = '',
+        story = '',
+        video = '',
+        num = 0;
   String name;
   int num;
   String story;
