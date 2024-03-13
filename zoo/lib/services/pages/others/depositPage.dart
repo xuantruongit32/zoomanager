@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
+import 'package:flutter_paypal/flutter_paypal.dart';
 import 'package:gap/gap.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -54,7 +54,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 }
 
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => PaypalCheckout(
+                  builder: (BuildContext context) => UsePaypal(
                     sandboxMode: true,
                     clientId: "ARNPpOudVsEFOwQXa8vTyhxFncwow7DZJSOUAjMgYczjUF43plAdrsC3xMkYsx58p8opBE-3j-3wNdeq",
                     secretKey: "EMa3JJBTZroOmw5ujAaza43SHQSCaB5lbMchubiskUaL8qMi8xpwra2294nahlB13agxPVb1aNSxFwvf",

@@ -44,9 +44,7 @@ dependencies:
   video_player: ^2.8.3
   flick_video_player: ^0.7.0
   cloud_firestore: ^4.15.8
-  flutter_inappwebview: ^5.8.0
-  http: ^0.13.6
-  flutter_paypal_checkout: ^1.0.1
+  flutter_paypal: ^0.2.0
 
 dev_dependencies:
   flutter_test:
