@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/gift.dart';
+import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
 
 class GiftOptionWidget extends StatelessWidget {
   final Gift gift;
@@ -34,8 +36,16 @@ class GiftOptionWidget extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () {
-                    donate(gift.price);
-                    Navigator.of(context).pop();
+                    if (DataManager.money < gift.price) {
+                      showDialog(
+                          context: context,
+                          builder: (context) => const ErrorDialog(errorMessage: 'Not enough money')).then((_) {
+                        Navigator.of(context).pop();
+                      });
+                    } else {
+                      donate(gift.price);
+                      Navigator.of(context).pop();
+                    }
                   },
                   child: const Text(
                     'Donate',

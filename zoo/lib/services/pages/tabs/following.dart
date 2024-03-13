@@ -19,12 +19,6 @@ class FollowingPage extends StatefulWidget {
 class _FollowingPageState extends State<FollowingPage> {
   bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
 
-  void donate1() {
-    setState(() {
-      widget.donate();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -64,7 +58,7 @@ class _FollowingPageState extends State<FollowingPage> {
                     ? DataManager.followList.where((house) => house.online).toList()
                     : DataManager.recommendedList)
                   LiveVideo(
-                    donate: donate1,
+                    donate: widget.donate,
                     house: house,
                   ),
               ],
