@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal/flutter_paypal.dart';
 import 'package:gap/gap.dart';
+import 'package:zoo/data/data.dart';
+import 'package:zoo/network/fire_store.dart';
 
 class CheckoutPage extends StatefulWidget {
   const CheckoutPage({Key? key}) : super(key: key);
@@ -71,6 +73,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ],
                     note: "Contact us for any questions on your order.",
                     onSuccess: (Map params) async {
+                      DataManager.money += amount;
+                      FireStore().updateMoney();
                       print("onSuccess: $params");
                     },
                     onError: (error) {

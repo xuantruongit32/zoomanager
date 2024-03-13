@@ -47,6 +47,7 @@ class FireStore {
     try {
       final userId = getUserId();
       DataManager.followList.clear();
+      DataManager.money = 0;
 
       DocumentSnapshot<Map<String, dynamic>> snapshot =
           await FirebaseFirestore.instance.collection('users/$userId/data').doc('followList').get();
@@ -62,8 +63,28 @@ class FireStore {
           DataManager.followList.add(house);
         }
       }
+      DocumentSnapshot<Map<String, dynamic>> snapshot1 =
+          await FirebaseFirestore.instance.collection('users/$userId/data').doc('money').get();
+      if (snapshot1.exists && snapshot1.data() != null) {
+        if (snapshot1.data()!.containsKey('money')) {
+          DataManager.money = snapshot1.data()!['money'];
+        }
+      }
     } catch (e) {
       print('Error fetching followed houses: $e');
+    }
+  }
+
+  Future<void> updateMoney() async {
+    final userId = getUserId();
+
+    try {
+      CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/data');
+      await collection.doc('money').set({
+        'money': DataManager.money,
+      });
+    } catch (e) {
+      print("Error: $e");
     }
   }
 }

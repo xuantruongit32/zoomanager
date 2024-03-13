@@ -323,4 +323,6 @@ class DataManager {
         price: 15,
         avatar: 'https://www.inventicons.com/uploads/iconset/537/wm/512/Banana_Peeled-38.png'),
   ];
+
+  static double money = 0;
 }
