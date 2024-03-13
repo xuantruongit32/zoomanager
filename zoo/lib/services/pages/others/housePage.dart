@@ -10,7 +10,6 @@ class HousePage extends StatelessWidget {
 
   final Function addFollow;
   final Function removeFollow;
-
   final House house;
 
   @override

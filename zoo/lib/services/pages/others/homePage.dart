@@ -29,20 +29,28 @@ class _HomePageState extends State<HomePage> {
     FireStore().removeFollowedHouseFromFireStore(house);
   }
 
+  void donate(double donate) {
+    DataManager.money -= donate;
+    FireStore().updateMoney();
+  }
+
   var _currentIndex = 0;
 
   late final tabs = [
     FollowingPage(
       addFollow: addFollow,
       removeFollow: removeFollow,
+      donate: donate,
     ),
     BrowsePage(
       addFollow: addFollow,
       removeFollow: removeFollow,
+      donate: donate,
     ),
     SearchPage(
       addFollow: addFollow,
       removeFollow: removeFollow,
+      donate: donate,
     ),
     AccountPage(),
   ];

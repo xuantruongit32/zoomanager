@@ -8,8 +8,9 @@ import 'package:zoo/services/pages/others/gift_option.dart';
 
 class HouseLive extends StatefulWidget {
   final House house;
+  final Function donate;
 
-  const HouseLive({super.key, required this.house});
+  const HouseLive({super.key, required this.house, required this.donate});
 
   @override
   _HouseLiveState createState() => _HouseLiveState();
@@ -47,7 +48,10 @@ class _HouseLiveState extends State<HouseLive> {
               children: DataManager.listGift.map((gift) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: GiftOptionWidget(gift: gift),
+                  child: GiftOptionWidget(
+                    gift: gift,
+                    donate: widget.donate,
+                  ),
                 );
               }).toList(),
             ),

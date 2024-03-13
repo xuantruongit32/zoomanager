@@ -3,11 +3,13 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/fullLiveVideo.dart';
 
 class FullLiveVideoList extends StatelessWidget {
-  const FullLiveVideoList({super.key, required this.houseList, required this.addFollow, required this.removeFollow});
+  const FullLiveVideoList(
+      {super.key, required this.houseList, required this.addFollow, required this.removeFollow, required this.donate});
 
   final List<House> houseList;
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class FullLiveVideoList extends StatelessWidget {
                 children: [
                   for (var house in houseList)
                     FullLiveVideo(
+                      donate: donate,
                       house: house,
                       addFollow: addFollow,
                       removeFollow: removeFollow,

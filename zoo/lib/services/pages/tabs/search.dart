@@ -5,10 +5,11 @@ import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key, required this.addFollow, required this.removeFollow});
+  const SearchPage({super.key, required this.addFollow, required this.removeFollow, required this.donate});
 
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -49,7 +50,10 @@ class _SearchPageState extends State<SearchPage> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: house.online
-                        ? LiveVideo(house: house)
+                        ? LiveVideo(
+                            house: house,
+                            donate: widget.donate,
+                          )
                         : OfflineHouse(
                             house: house,
                             addFollow: widget.addFollow,

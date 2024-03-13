@@ -4,8 +4,9 @@ import 'package:zoo/services/models/gift.dart';
 
 class GiftOptionWidget extends StatelessWidget {
   final Gift gift;
+  final Function donate;
 
-  const GiftOptionWidget({Key? key, required this.gift}) : super(key: key);
+  const GiftOptionWidget({Key? key, required this.gift, required this.donate}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +34,11 @@ class GiftOptionWidget extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () {
+                    donate(gift.price);
                     Navigator.of(context).pop();
                   },
                   child: const Text(
-                    'Cancel',
+                    'Donate',
                     style: TextStyle(
                       color: Colors.red,
                     ),
@@ -47,7 +49,7 @@ class GiftOptionWidget extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   child: const Text(
-                    'Donate',
+                    'Cancel',
                     style: TextStyle(
                       color: Colors.blue,
                     ),

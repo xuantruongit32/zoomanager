@@ -4,9 +4,10 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/houseLive.dart';
 
 class LiveVideo extends StatelessWidget {
-  const LiveVideo({Key? key, required this.house}) : super(key: key);
+  const LiveVideo({Key? key, required this.house, required this.donate}) : super(key: key);
 
   final House house;
+  final Function donate;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,15 @@ class LiveVideo extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => HouseLive(house: house)));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HouseLive(
+                house: house,
+                donate: donate,
+              ),
+            ),
+          );
         },
         child: Stack(
           children: [

@@ -4,10 +4,12 @@ import 'package:zoo/services/pages/reuseable/houseLive.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FullLiveVideo extends StatelessWidget {
-  const FullLiveVideo({super.key, required this.house, required this.addFollow, required this.removeFollow});
+  const FullLiveVideo(
+      {super.key, required this.house, required this.addFollow, required this.removeFollow, required this.donate});
 
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   final House house;
 
@@ -15,7 +17,15 @@ class FullLiveVideo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HouseLive(house: house)));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HouseLive(
+              house: house,
+              donate: donate,
+            ),
+          ),
+        );
       },
       child: Stack(
         children: [

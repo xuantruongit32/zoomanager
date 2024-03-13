@@ -5,12 +5,14 @@ import 'package:zoo/services/models/species.dart';
 import 'package:zoo/services/pages/others/fullLiveVideoList.dart';
 
 class SpeciesShow extends StatelessWidget {
-  const SpeciesShow({Key? key, required this.species, required this.addFollow, required this.removeFollow})
+  const SpeciesShow(
+      {Key? key, required this.species, required this.addFollow, required this.removeFollow, required this.donate})
       : super(key: key);
 
   final Species species;
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class SpeciesShow extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => FullLiveVideoList(
+                donate: donate,
                 addFollow: addFollow,
                 removeFollow: removeFollow,
                 houseList: DataManager.getHousesBySpeciesId(species.id),

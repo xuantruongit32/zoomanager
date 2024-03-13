@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
-import 'package:zoo/network/fire_store.dart';
 import 'package:zoo/services/pages/reuseable/circle_house.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FollowingPage extends StatefulWidget {
-  FollowingPage({Key? key, required this.addFollow, required this.removeFollow}) : super(key: key);
+  FollowingPage({Key? key, required this.addFollow, required this.removeFollow, required this.donate})
+      : super(key: key);
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   @override
   _FollowingPageState createState() => _FollowingPageState();
@@ -17,6 +18,12 @@ class FollowingPage extends StatefulWidget {
 
 class _FollowingPageState extends State<FollowingPage> {
   bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
+
+  void donate1() {
+    setState(() {
+      widget.donate();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +64,7 @@ class _FollowingPageState extends State<FollowingPage> {
                     ? DataManager.followList.where((house) => house.online).toList()
                     : DataManager.recommendedList)
                   LiveVideo(
+                    donate: donate1,
                     house: house,
                   ),
               ],
