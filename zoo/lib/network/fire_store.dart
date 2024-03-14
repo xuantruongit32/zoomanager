@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/services/models/donate.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/transaction.dart';
 
@@ -115,5 +116,17 @@ class FireStore {
       },
       SetOptions(merge: true),
     );
+  }
+
+  Future<void> addDonateToFireStore(Donate donate) async {
+    final userId = getUserId();
+    CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/donate');
+    await collection.doc(donate.id).set({
+      'date': donate.date,
+      'afterMoney': donate.afterMoney,
+      'beforeMoney': donate.beforeMoney,
+      'id': donate.id,
+      'gift': donate.gift.id,
+    });
   }
 }

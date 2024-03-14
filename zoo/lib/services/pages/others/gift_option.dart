@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/network/fire_store.dart';
 import 'package:zoo/services/models/donate.dart';
 import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
@@ -51,7 +52,9 @@ class GiftOptionWidget extends StatelessWidget {
                           beforeMoney: DataManager.money + gift.price,
                           afterMoney: DataManager.money);
                       DataManager.donateList.add(donate1);
-                      Navigator.of(context).pop();
+                      FireStore().addDonateToFireStore(donate1).then(
+                            (value) => Navigator.of(context).pop(),
+                          );
                     }
                   },
                   child: const Text(
