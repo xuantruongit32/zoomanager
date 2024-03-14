@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoo/services/pages/others/depositPage.dart';
 import 'package:zoo/services/pages/others/historyPage.dart';
+import 'package:zoo/services/pages/others/privacyPage.dart';
 import 'package:zoo/services/pages/reuseable/customIcon.dart';
 import 'package:zoo/services/pages/reuseable/iconButtonText.dart';
 
@@ -53,7 +54,14 @@ class AccountPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButtonText(
-                  fun: () {},
+                  fun: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PrivacyPage(),
+                      ),
+                    );
+                  },
                   label: 'Privacy',
                   icon: CustomIcon(imagePath: 'assets/icon/privacy.png'),
                 ),
