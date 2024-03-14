@@ -21,6 +21,8 @@ class FullLiveVideo extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => HouseLive(
+              addFollow: addFollow,
+              removeFollow: removeFollow,
               house: house,
               donate: donate,
             ),

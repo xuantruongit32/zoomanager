@@ -4,6 +4,8 @@ import 'package:gap/gap.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/network/fire_store.dart';
+import 'package:zoo/services/pages/others/depositPage.dart';
+import 'package:zoo/services/pages/others/privacyPage.dart';
 import 'package:zoo/services/pages/tabs/account.dart';
 import 'package:zoo/services/pages/tabs/browse.dart';
 import 'package:zoo/services/pages/tabs/following.dart';
@@ -88,8 +90,18 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: Row(
           children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(_getAvatar()),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PrivacyPage(),
+                  ),
+                );
+              },
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(_getAvatar()),
+              ),
             ),
             const Gap(10),
             Text(
@@ -98,7 +110,14 @@ class _HomePageState extends State<HomePage> {
             ),
             const Spacer(),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CheckoutPage(),
+                  ),
+                );
+              },
               icon: const Icon(LineIcons.dollarSign),
               label: Text(
                 DataManager.money.toStringAsFixed(2),

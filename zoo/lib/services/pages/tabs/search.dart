@@ -51,6 +51,8 @@ class _SearchPageState extends State<SearchPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: house.online
                         ? LiveVideo(
+                            addFollow: widget.addFollow,
+                            removeFollow: widget.removeFollow,
                             house: house,
                             donate: widget.donate,
                           )

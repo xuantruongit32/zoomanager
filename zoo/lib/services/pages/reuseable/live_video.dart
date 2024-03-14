@@ -4,10 +4,14 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/houseLive.dart';
 
 class LiveVideo extends StatelessWidget {
-  const LiveVideo({Key? key, required this.house, required this.donate}) : super(key: key);
+  const LiveVideo(
+      {Key? key, required this.house, required this.donate, required this.addFollow, required this.removeFollow})
+      : super(key: key);
 
   final House house;
   final Function donate;
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,8 @@ class LiveVideo extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => HouseLive(
+                addFollow: addFollow,
+                removeFollow: removeFollow,
                 house: house,
                 donate: donate,
               ),
@@ -62,7 +68,7 @@ class LiveVideo extends StatelessWidget {
                       ),
                       const Gap(8),
                       SizedBox(
-                        width: double.infinity, // Ensure the container takes full width
+                        width: double.infinity,
                         child: Text(
                           "House with ${house.num.toString()} members",
                           style: const TextStyle(

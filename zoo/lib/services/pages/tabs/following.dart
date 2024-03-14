@@ -58,6 +58,8 @@ class _FollowingPageState extends State<FollowingPage> {
                     ? DataManager.followList.where((house) => house.online).toList()
                     : DataManager.recommendedList)
                   LiveVideo(
+                    addFollow: widget.addFollow,
+                    removeFollow: widget.removeFollow,
                     donate: widget.donate,
                     house: house,
                   ),
