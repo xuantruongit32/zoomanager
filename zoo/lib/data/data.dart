@@ -1,3 +1,4 @@
+import 'package:zoo/services/models/donate.dart';
 import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/species.dart';
@@ -325,7 +326,7 @@ class DataManager {
         avatar: 'https://www.inventicons.com/uploads/iconset/537/wm/512/Banana_Peeled-38.png'),
   ];
 
-  double getTotalTrans() {
+  double gettotaltrans() {
     double total = 0;
     for (var tran in trans) {
       total += tran.amount;
@@ -333,6 +334,15 @@ class DataManager {
     return total;
   }
 
+  double gettotaldonate() {
+    double total = 0;
+    for (var donate in donateList) {
+      total += donate.gift.price;
+    }
+    return total;
+  }
+
   static double money = 0;
   static List<Trans> trans = [];
+  static List<Donate> donateList = [];
 }
