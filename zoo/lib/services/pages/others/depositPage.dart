@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal/flutter_paypal.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/network/fire_store.dart';
+import 'package:zoo/services/models/transaction.dart';
 
 class CheckoutPage extends StatefulWidget {
   const CheckoutPage({Key? key}) : super(key: key);
@@ -76,6 +78,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       note: "Contact us for any questions on your order.",
                       onSuccess: (Map params) async {
                         setState(() {
+                          Trans tran = Trans(
+                            amount: double.parse(_amountController.text),
+                            date: DateTime.now(),
+                          );
+                          DataManager.trans.add(tran);
                           _transactionSuccess = true;
                         });
                         DataManager.money += amount;
@@ -109,10 +116,28 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     DataColumn(label: Text('Amount (USD)')),
                   ],
                   rows: [
+                    ...DataManager.trans.map(
+                      (e) => DataRow(
+                        cells: [
+                          DataCell(Text(DateFormat('dd-MM-yyyy').format(e.date))),
+                          DataCell(
+                            Text(
+                              e.amount.toStringAsFixed(2),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     DataRow(cells: [
-                      DataCell(Text('2023-01-01')),
-                      DataCell(Text(_amountController.text)),
-                    ]),
+                      const DataCell(
+                        Text('Total'),
+                      ),
+                      DataCell(
+                        Text(
+                          DataManager().getTotalTrans().toStringAsFixed(2),
+                        ),
+                      ),
+                    ])
                   ],
                 ),
             ],

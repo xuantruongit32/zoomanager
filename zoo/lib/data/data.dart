@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/species.dart';
+import 'package:zoo/services/models/transaction.dart';
 
 class DataManager {
   static House getHouseById(String id) {
@@ -324,5 +326,14 @@ class DataManager {
         avatar: 'https://www.inventicons.com/uploads/iconset/537/wm/512/Banana_Peeled-38.png'),
   ];
 
+  double getTotalTrans() {
+    double total = 0;
+    for (var tran in trans) {
+      total += tran.amount;
+    }
+    return total;
+  }
+
   static double money = 0;
+  static List<Trans> trans = [];
 }
