@@ -31,7 +31,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
                 'assets/images/logo.png',
@@ -109,36 +108,52 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                 ),
               ),
-              if (_transactionSuccess)
-                DataTable(
-                  columns: const [
-                    DataColumn(label: Text('Transaction ID')),
-                    DataColumn(label: Text('Amount (USD)')),
-                  ],
-                  rows: [
-                    ...DataManager.trans.map(
-                      (e) => DataRow(
-                        cells: [
-                          DataCell(Text(DateFormat('dd-MM-yyyy').format(e.date))),
-                          DataCell(
-                            Text(
-                              e.amount.toStringAsFixed(2),
+              const Gap(20),
+              if (_transactionSuccess || DataManager.trans.isNotEmpty)
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.grey.shade400),
+                  ),
+                  child: DataTable(
+                    columnSpacing: 20,
+                    columns: const [
+                      DataColumn(
+                        label: Text('     Date', style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      DataColumn(
+                        label: Text('Amount (USD)', style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                    ],
+                    rows: [
+                      ...DataManager.trans.map(
+                        (e) => DataRow(
+                          cells: [
+                            DataCell(
+                              Text(DateFormat('dd-MM-yyyy').format(e.date)),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    DataRow(cells: [
-                      const DataCell(
-                        Text('Total'),
-                      ),
-                      DataCell(
-                        Text(
-                          DataManager().getTotalTrans().toStringAsFixed(2),
+                            DataCell(
+                              Text(
+                                '      ' + e.amount.toStringAsFixed(2),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ])
-                  ],
+                      DataRow(cells: [
+                        const DataCell(
+                          Text('     Total', style: TextStyle(fontWeight: FontWeight.bold)),
+                        ),
+                        DataCell(
+                          Text(
+                            '      ' + DataManager().getTotalTrans().toStringAsFixed(2),
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ])
+                    ],
+                  ),
                 ),
             ],
           ),
