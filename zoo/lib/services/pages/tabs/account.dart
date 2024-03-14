@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gap/gap.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoo/services/pages/others/depositPage.dart';
+import 'package:zoo/services/pages/others/historyPage.dart';
 import 'package:zoo/services/pages/reuseable/customIcon.dart';
 import 'package:zoo/services/pages/reuseable/iconButtonText.dart';
 
@@ -21,13 +22,25 @@ class AccountPage extends StatelessWidget {
               children: [
                 IconButtonText(
                   fun: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CheckoutPage(),
+                      ),
+                    );
                   },
                   label: 'Donation',
                   icon: CustomIcon(imagePath: 'assets/icon/donation.png'),
                 ),
                 IconButtonText(
-                  fun: () {},
+                  fun: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HistoryPage(),
+                      ),
+                    );
+                  },
                   label: 'History',
                   icon: CustomIcon(
                     imagePath: 'assets/icon/history.png',

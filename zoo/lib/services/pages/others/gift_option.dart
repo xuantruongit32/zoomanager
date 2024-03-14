@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/services/models/donate.dart';
 import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
 
@@ -44,6 +45,12 @@ class GiftOptionWidget extends StatelessWidget {
                       });
                     } else {
                       donate(gift.price);
+                      Donate donate1 = Donate(
+                          date: DateTime.now(),
+                          gift: gift,
+                          beforeMoney: DataManager.money + gift.price,
+                          afterMoney: DataManager.money);
+                      DataManager.donateList.add(donate1);
                       Navigator.of(context).pop();
                     }
                   },

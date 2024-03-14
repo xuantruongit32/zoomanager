@@ -326,7 +326,7 @@ class DataManager {
         avatar: 'https://www.inventicons.com/uploads/iconset/537/wm/512/Banana_Peeled-38.png'),
   ];
 
-  double gettotaltrans() {
+  double getTotalTrans() {
     double total = 0;
     for (var tran in trans) {
       total += tran.amount;
@@ -334,7 +334,7 @@ class DataManager {
     return total;
   }
 
-  double gettotaldonate() {
+  double getTotalDonate() {
     double total = 0;
     for (var donate in donateList) {
       total += donate.gift.price;
