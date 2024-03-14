@@ -13,6 +13,7 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   final TextEditingController _amountController = TextEditingController();
+  bool _transactionSuccess = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,80 +25,98 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              height: 250,
-              width: 250,
-            ),
-            const Gap(20),
-            TextField(
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Amount (USD)',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.attach_money),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                height: 250,
+                width: 250,
               ),
-            ),
-            const Gap(20),
-            ElevatedButton.icon(
-              onPressed: () async {
-                int amount = int.tryParse(_amountController.text) ?? 0;
-                if (amount <= 0) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Please enter a valid amount.'),
-                  ));
-                  return;
-                }
-
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => UsePaypal(
-                    sandboxMode: true,
-                    clientId: "ARNPpOudVsEFOwQXa8vTyhxFncwow7DZJSOUAjMgYczjUF43plAdrsC3xMkYsx58p8opBE-3j-3wNdeq",
-                    secretKey: "EMa3JJBTZroOmw5ujAaza43SHQSCaB5lbMchubiskUaL8qMi8xpwra2294nahlB13agxPVb1aNSxFwvf",
-                    returnURL: "success.snippetcoder.com",
-                    cancelURL: "cancel.snippetcoder.com",
-                    transactions: [
-                      {
-                        "amount": {
-                          "total": amount.toString(),
-                          "currency": "USD",
-                          "details": {"subtotal": amount.toString(), "shipping": '0', "shipping_discount": 0}
-                        },
-                      }
-                    ],
-                    note: "Contact us for any questions on your order.",
-                    onSuccess: (Map params) async {
-                      DataManager.money += amount;
-                      FireStore().updateMoney();
-                      print("onSuccess: $params");
-                    },
-                    onError: (error) {
-                      print("onError: $error");
-                      Navigator.pop(context);
-                    },
-                    onCancel: () {
-                      print('cancelled:');
-                    },
-                  ),
-                ));
-              },
-              icon: const Icon(Icons.shopping_cart),
-              label: const Text('Checkout'),
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                textStyle: const TextStyle(fontSize: 18),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+              const Gap(20),
+              TextField(
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Amount (USD)',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.attach_money),
                 ),
               ),
-            ),
-          ],
+              const Gap(20),
+              ElevatedButton.icon(
+                onPressed: () async {
+                  int amount = int.tryParse(_amountController.text) ?? 0;
+                  if (amount <= 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Please enter a valid amount.'),
+                    ));
+                    return;
+                  }
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => UsePaypal(
+                      sandboxMode: true,
+                      clientId: "ARNPpOudVsEFOwQXa8vTyhxFncwow7DZJSOUAjMgYczjUF43plAdrsC3xMkYsx58p8opBE-3j-3wNdeq",
+                      secretKey: "EMa3JJBTZroOmw5ujAaza43SHQSCaB5lbMchubiskUaL8qMi8xpwra2294nahlB13agxPVb1aNSxFwvf",
+                      returnURL: "success.snippetcoder.com",
+                      cancelURL: "cancel.snippetcoder.com",
+                      transactions: [
+                        {
+                          "amount": {
+                            "total": amount.toString(),
+                            "currency": "USD",
+                            "details": {"subtotal": amount.toString(), "shipping": '0', "shipping_discount": 0}
+                          },
+                        }
+                      ],
+                      note: "Contact us for any questions on your order.",
+                      onSuccess: (Map params) async {
+                        setState(() {
+                          _transactionSuccess = true;
+                        });
+                        DataManager.money += amount;
+                        FireStore().updateMoney();
+                        print("onSuccess: $params");
+                      },
+                      onError: (error) {
+                        print("onError: $error");
+                        Navigator.pop(context);
+                      },
+                      onCancel: () {
+                        print('cancelled:');
+                      },
+                    ),
+                  ));
+                },
+                icon: const Icon(Icons.shopping_cart),
+                label: const Text('Checkout'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  textStyle: const TextStyle(fontSize: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              if (_transactionSuccess)
+                DataTable(
+                  columns: const [
+                    DataColumn(label: Text('Transaction ID')),
+                    DataColumn(label: Text('Amount (USD)')),
+                  ],
+                  rows: [
+                    DataRow(cells: [
+                      DataCell(Text('2023-01-01')),
+                      DataCell(Text(_amountController.text)),
+                    ]),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
