@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/species.dart';
@@ -214,7 +213,7 @@ class DataManager {
       avatar:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
       cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: true,
+      online: false,
       followers: 1701,
       species: listSpecies[1],
       video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
@@ -269,7 +268,7 @@ class DataManager {
       avatar:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
       cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: true,
+      online: false,
       followers: 1701,
       species: listSpecies[1],
       video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',
@@ -282,7 +281,7 @@ class DataManager {
       avatar:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
       cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
-      online: true,
+      online: false,
       followers: 1701,
       species: listSpecies[1],
       video: 'https://www.youtube.com/watch?v=-IlG32Pb43g',

@@ -20,13 +20,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "PayPal Checkout",
-          style: TextStyle(fontSize: 20),
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -82,6 +76,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             date: DateTime.now(),
                           );
                           DataManager.trans.add(tran);
+                          FireStore().addTransactionToFireStore(tran);
                           _transactionSuccess = true;
                         });
                         DataManager.money += amount;

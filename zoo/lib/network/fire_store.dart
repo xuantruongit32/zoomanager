@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
+import 'package:zoo/services/models/transaction.dart';
 
 class FireStore {
   String? getUserId() {
@@ -58,7 +59,6 @@ class FireStore {
         for (var data in followList.entries) {
           var id = data.key;
           House house = DataManager.getHouseById(id);
-          print("HHHEHEHEHHEH ${house.id}");
 
           DataManager.followList.add(house);
         }
@@ -68,6 +68,23 @@ class FireStore {
       if (snapshot1.exists && snapshot1.data() != null) {
         if (snapshot1.data()!.containsKey('money')) {
           DataManager.money = snapshot1.data()!['money'];
+        }
+      }
+      DataManager.trans.clear();
+      DocumentSnapshot<Map<String, dynamic>> snapshot2 =
+          await FirebaseFirestore.instance.collection('users/$userId/data').doc('trans').get();
+      Map<String, dynamic>? data = snapshot2.data();
+
+      if (data != null) {
+        for (var d in data.entries) {
+          double amount = double.parse(d.value.toString());
+          DateTime date = DateTime.parse(d.key);
+          DataManager.trans.add(
+            Trans(
+              date: date,
+              amount: amount,
+            ),
+          );
         }
       }
     } catch (e) {
@@ -86,5 +103,17 @@ class FireStore {
     } catch (e) {
       print("Error: $e");
     }
+  }
+
+  Future<void> addTransactionToFireStore(Trans tran) async {
+    final userId = getUserId();
+
+    CollectionReference transactionsCollection = FirebaseFirestore.instance.collection('users/$userId/data');
+    await transactionsCollection.doc('trans').set(
+      {
+        tran.date.toString(): tran.amount,
+      },
+      SetOptions(merge: true),
+    );
   }
 }
