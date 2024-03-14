@@ -34,6 +34,15 @@ class DataManager {
     return false;
   }
 
+  static Gift getGiftById(String id) {
+    for (var gift in listGift) {
+      if (gift.id == id) {
+        return gift;
+      }
+    }
+    return Gift.empty();
+  }
+
   static List<Species> listSpecies = [
     Species(
         name: 'bird2',

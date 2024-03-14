@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/donate.dart';
+import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/transaction.dart';
 
@@ -88,6 +89,22 @@ class FireStore {
           );
         }
       }
+      DataManager.donateList.clear();
+      QuerySnapshot<Map<String, dynamic>> snapshot3 =
+          await FirebaseFirestore.instance.collection('users/$userId/donate').get();
+
+      for (QueryDocumentSnapshot<Map<String, dynamic>> document in snapshot3.docs) {
+        Map<String, dynamic> data = document.data();
+        Gift gift = DataManager.getGiftById(data['gift']);
+        DateTime date = DateTime.parse(data['date']);
+        Donate donate = Donate(
+          date: date,
+          beforeMoney: data['beforeMoney'],
+          gift: gift,
+          afterMoney: data['afterMoney'],
+        );
+        DataManager.donateList.add(donate);
+      }
     } catch (e) {
       print('Error fetching followed houses: $e');
     }
@@ -122,7 +139,7 @@ class FireStore {
     final userId = getUserId();
     CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/donate');
     await collection.doc(donate.id).set({
-      'date': donate.date,
+      'date': donate.date.toString(),
       'afterMoney': donate.afterMoney,
       'beforeMoney': donate.beforeMoney,
       'id': donate.id,
