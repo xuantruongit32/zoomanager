@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/network/fire_store.dart';
@@ -34,6 +36,30 @@ class _HomePageState extends State<HomePage> {
     FireStore().updateMoney();
   }
 
+  String _getName() {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      if (user.displayName == null) {
+        return "No name";
+      } else {
+        return user.displayName!;
+      }
+    }
+    return '';
+  }
+
+  String _getAvatar() {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      if (user.photoURL == null) {
+        return "https://cdn.tuoitre.vn/zoom/480_300/2022/4/20/photo-1-1650424191062639501281-crop-1650424241729438626691.jpg";
+      } else {
+        return user.photoURL!;
+      }
+    }
+    return 'https://cdn.tuoitre.vn/zoom/480_300/2022/4/20/photo-1-1650424191062639501281-crop-1650424241729438626691.jpg';
+  }
+
   var _currentIndex = 0;
 
   late final tabs = [
@@ -59,8 +85,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          DataManager.money.toStringAsFixed(2),
+        elevation: 0,
+        title: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(_getAvatar()),
+            ),
+            const Gap(10),
+            Text(
+              _getName(),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const Spacer(),
+            ElevatedButton.icon(
+              onPressed: () {},
+              icon: const Icon(LineIcons.dollarSign),
+              label: Text(
+                DataManager.money.toStringAsFixed(2),
+              ),
+            ),
+          ],
         ),
       ),
       body: tabs[_currentIndex],
