@@ -1,3 +1,4 @@
+import 'package:confetti/confetti.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -24,14 +25,23 @@ class _HouseLiveState extends State<HouseLive> {
   late final FlickManager flickManager =
       FlickManager(videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(widget.house.video)));
 
+  late ConfettiController _confettiController;
   @override
   void initState() {
     super.initState();
+    _confettiController = ConfettiController(
+      duration: const Duration(seconds: 5),
+    );
   }
 
   @override
   void dispose() {
     super.dispose();
+    _confettiController.dispose();
+  }
+
+  void _showConfetti() {
+    _confettiController.play();
   }
 
   @override
@@ -72,11 +82,27 @@ class _HouseLiveState extends State<HouseLive> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GiftOptionWidget(
+                    confetti: _showConfetti,
                     gift: gift,
                     donate: widget.donate,
                   ),
                 );
               }).toList(),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirectionality: BlastDirectionality.explosive, // don't specify a direction, blast randomly
+              shouldLoop: true, // start again as soon as the animation is finished
+              colors: const [
+                Colors.green,
+                Colors.blue,
+                Colors.pink,
+                Colors.orange,
+                Colors.purple
+              ], // manually specify the colors to be used
             ),
           ),
         ],

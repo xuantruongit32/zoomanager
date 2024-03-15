@@ -9,8 +9,10 @@ import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
 class GiftOptionWidget extends StatelessWidget {
   final Gift gift;
   final Function donate;
+  final Function confetti;
 
-  const GiftOptionWidget({Key? key, required this.gift, required this.donate}) : super(key: key);
+  const GiftOptionWidget({Key? key, required this.gift, required this.donate, required this.confetti})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +54,10 @@ class GiftOptionWidget extends StatelessWidget {
                           beforeMoney: DataManager.money + gift.price,
                           afterMoney: DataManager.money);
                       DataManager.donateList.add(donate1);
-                      FireStore().addDonateToFireStore(donate1).then(
-                            (value) => Navigator.of(context).pop(),
-                          );
+                      FireStore().addDonateToFireStore(donate1).then((value) {
+                        Navigator.of(context).pop();
+                        confetti();
+                      });
                     }
                   },
                   child: const Text(
