@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/donate.dart';
-import 'package:zoo/services/models/gift.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/models/transaction.dart';
 
@@ -95,13 +94,14 @@ class FireStore {
 
       for (QueryDocumentSnapshot<Map<String, dynamic>> document in snapshot3.docs) {
         Map<String, dynamic> data = document.data();
-        Gift gift = DataManager.getGiftById(data['gift']);
         DateTime date = DateTime.parse(data['date']);
         Donate donate = Donate(
           date: date,
           beforeMoney: data['beforeMoney'],
-          gift: gift,
+          giftPrice: data['giftPrice'],
+          giftName: data['giftName'],
           afterMoney: data['afterMoney'],
+          who: data['who'],
         );
         DataManager.donateList.add(donate);
       }
@@ -143,7 +143,9 @@ class FireStore {
       'afterMoney': donate.afterMoney,
       'beforeMoney': donate.beforeMoney,
       'id': donate.id,
-      'gift': donate.gift.id,
+      'giftName': donate.giftName,
+      'giftPrice': donate.giftPrice,
+      'who': donate.who,
     });
   }
 }

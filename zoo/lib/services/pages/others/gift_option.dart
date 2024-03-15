@@ -10,8 +10,10 @@ class GiftOptionWidget extends StatelessWidget {
   final Gift gift;
   final Function donate;
   final Function confetti;
+  final String houseName;
 
-  const GiftOptionWidget({Key? key, required this.gift, required this.donate, required this.confetti})
+  const GiftOptionWidget(
+      {Key? key, required this.gift, required this.donate, required this.confetti, required this.houseName})
       : super(key: key);
 
   @override
@@ -49,8 +51,10 @@ class GiftOptionWidget extends StatelessWidget {
                     } else {
                       donate(gift.price);
                       Donate donate1 = Donate(
+                          who: houseName,
                           date: DateTime.now(),
-                          gift: gift,
+                          giftPrice: gift.price,
+                          giftName: gift.name,
                           beforeMoney: DataManager.money + gift.price,
                           afterMoney: DataManager.money);
                       DataManager.donateList.add(donate1);

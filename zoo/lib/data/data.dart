@@ -346,7 +346,7 @@ class DataManager {
   double getTotalDonate() {
     double total = 0;
     for (var donate in donateList) {
-      total += donate.gift.price;
+      total += donate.giftPrice;
     }
     return total;
   }

@@ -82,6 +82,7 @@ class _HouseLiveState extends State<HouseLive> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GiftOptionWidget(
+                    houseName: widget.house.name,
                     confetti: _showConfetti,
                     gift: gift,
                     donate: widget.donate,

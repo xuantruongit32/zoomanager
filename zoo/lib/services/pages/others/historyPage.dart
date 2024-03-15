@@ -39,6 +39,9 @@ class HistoryPage extends StatelessWidget {
                       label: Text(' Price'),
                     ),
                     DataColumn(
+                      label: Text(' Donate'),
+                    ),
+                    DataColumn(
                       label: Text(' Before'),
                     ),
                     DataColumn(
@@ -56,12 +59,17 @@ class HistoryPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                e.gift.name,
+                                e.giftName,
                               ),
                             ),
                             DataCell(
                               Text(
-                                '\$${e.gift.price.toStringAsFixed(2)}',
+                                '\$${e.giftPrice.toStringAsFixed(2)}',
+                              ),
+                            ),
+                            DataCell(
+                              Text(
+                                e.who,
                               ),
                             ),
                             DataCell(
