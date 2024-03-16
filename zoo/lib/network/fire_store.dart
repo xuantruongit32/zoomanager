@@ -96,13 +96,14 @@ class FireStore {
       for (QueryDocumentSnapshot<Map<String, dynamic>> document in snapshot3.docs) {
         Map<String, dynamic> data = document.data();
         DateTime date = DateTime.parse(data['date']);
+        House who = DataManager.getHouseById(data['who']);
         Donate donate = Donate(
           date: date,
           beforeMoney: data['beforeMoney'],
           giftPrice: data['giftPrice'],
           giftName: data['giftName'],
           afterMoney: data['afterMoney'],
-          who: data['who'],
+          who: who,
         );
         DataManager.donateList.add(donate);
       }
@@ -153,13 +154,19 @@ class FireStore {
       'id': donate.id,
       'giftName': donate.giftName,
       'giftPrice': donate.giftPrice,
-      'who': donate.who,
+      'who': donate.who.id,
     });
     CollectionReference collection2 = FirebaseFirestore.instance.collection('money/data/donate');
     DateTime now = DateTime.now();
-    String mess = userId.toString() + " " + donate.giftPrice.toStringAsFixed(2) + " " + donate.who;
+    String mess =
+        userId.toString() + "_" + donate.giftPrice.toStringAsFixed(2) + "_" + donate.who.name + "_" + donate.who.id;
     await collection2.doc('total').set(
       {now.toString(): mess},
+      SetOptions(merge: true),
+    );
+    String mess2 = userId.toString() + "_" + donate.giftPrice.toStringAsFixed(2);
+    await collection2.doc(donate.who.id).set(
+      {now.toString(): mess2},
       SetOptions(merge: true),
     );
   }

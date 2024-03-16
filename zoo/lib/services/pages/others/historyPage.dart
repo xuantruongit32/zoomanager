@@ -69,7 +69,7 @@ class HistoryPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                e.who,
+                                e.who.name,
                               ),
                             ),
                             DataCell(

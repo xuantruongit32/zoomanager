@@ -4,16 +4,17 @@ import 'package:zoo/data/data.dart';
 import 'package:zoo/network/fire_store.dart';
 import 'package:zoo/services/models/donate.dart';
 import 'package:zoo/services/models/gift.dart';
+import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/auth/errorDialog.dart';
 
 class GiftOptionWidget extends StatelessWidget {
   final Gift gift;
   final Function donate;
   final Function confetti;
-  final String houseName;
+  final House house;
 
   const GiftOptionWidget(
-      {Key? key, required this.gift, required this.donate, required this.confetti, required this.houseName})
+      {Key? key, required this.gift, required this.donate, required this.confetti, required this.house})
       : super(key: key);
 
   @override
@@ -51,7 +52,7 @@ class GiftOptionWidget extends StatelessWidget {
                     } else {
                       donate(gift.price);
                       Donate donate1 = Donate(
-                          who: houseName,
+                          who: house,
                           date: DateTime.now(),
                           giftPrice: gift.price,
                           giftName: gift.name,

@@ -1,4 +1,5 @@
 import 'package:uuid/uuid.dart';
+import 'package:zoo/services/models/house.dart';
 
 var uuid = const Uuid();
 
@@ -14,7 +15,7 @@ class Donate {
   final DateTime date;
   final double giftPrice;
   final String giftName;
-  final String who;
+  final House who;
   final double beforeMoney;
   final double afterMoney;
   final String id;
