@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/circle_house.dart';
 import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
@@ -22,6 +23,16 @@ class FollowingPage extends StatefulWidget {
 
 class _FollowingPageState extends State<FollowingPage> {
   bool checkFollowNull = DataManager.followList.isNotEmpty;
+  List<House> listHouseOnline = DataManager.followList.where((element) => element.online).toList();
+  @override
+  void initState() {
+    listHouseOnline.addAll(
+      DataManager.listHouse.where(
+        (element) => element.online && !DataManager.followList.contains(element),
+      ),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +46,7 @@ class _FollowingPageState extends State<FollowingPage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        for (var house in DataManager.followList)
+                        for (var house in listHouseOnline)
                           CircleHouse(
                             house: house,
                             addFollow: widget.addFollow,
@@ -121,7 +132,7 @@ class _FollowingPageState extends State<FollowingPage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        for (var house in DataManager.followList)
+                        for (var house in listHouseOnline)
                           CircleHouse(
                             house: house,
                             addFollow: widget.addFollow,

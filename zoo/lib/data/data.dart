@@ -273,7 +273,7 @@ class DataManager {
 
   List<House> getRecommendList() {
     List<House> list = [];
-    List<House> total = listHouse;
+    List<House> total = listHouse.toList();
     total.removeWhere(
       (element) => followList.contains(element),
     );
