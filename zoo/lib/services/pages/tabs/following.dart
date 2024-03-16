@@ -23,12 +23,15 @@ class FollowingPage extends StatefulWidget {
 
 class _FollowingPageState extends State<FollowingPage> {
   bool checkFollowNull = DataManager.followList.isNotEmpty;
-  List<House> listHouseOnline = DataManager.followList.where((element) => element.online).toList();
+  List<House> listHouseOnline = List.from(DataManager.followList);
   @override
   void initState() {
+    listHouseOnline.sort((a, b) => b.online ? 1 : -1);
+    List<House> total = List.from(DataManager.listHouse);
+    total.sort((a, b) => b.online ? 1 : -1);
     listHouseOnline.addAll(
-      DataManager.listHouse.where(
-        (element) => element.online && !DataManager.followList.contains(element),
+      total.where(
+        (element) => !listHouseOnline.contains(element),
       ),
     );
     super.initState();
@@ -94,7 +97,7 @@ class _FollowingPageState extends State<FollowingPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var house in DataManager().getRecommendList().where((house) => house.online).toList())
+                      for (var house in DataManager().getRecommendList(5).where((house) => house.online).toList())
                         LiveVideo(
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,
@@ -156,7 +159,7 @@ class _FollowingPageState extends State<FollowingPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var house in DataManager().getRecommendList().where((house) => house.online).toList())
+                      for (var house in DataManager().getRecommendList(10).where((house) => house.online).toList())
                         LiveVideo(
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,

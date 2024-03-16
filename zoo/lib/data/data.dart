@@ -148,7 +148,7 @@ class DataManager {
     House.old(
       id: '4b3b65d9-52a2-4f05-8666-2c9b7771d312',
       name: "Tiger Territory",
-      online: true,
+      online: false,
       followers: 4500,
       species: listSpecies[3],
       num: 1,
@@ -196,7 +196,7 @@ class DataManager {
     House.old(
       id: '7f53df1c-793f-48e5-88f6-69b75900e88a',
       name: "Lion's Den",
-      online: true,
+      online: false,
       followers: 3200,
       species: listSpecies[1],
       num: 5,
@@ -228,7 +228,7 @@ class DataManager {
     House.old(
       id: '9c83d1a0-5a2e-4999-81b6-b0d76b01186d',
       name: "Tiger Haven",
-      online: true,
+      online: false,
       followers: 3915,
       species: listSpecies[4],
       num: 8,
@@ -271,16 +271,16 @@ class DataManager {
     return total;
   }
 
-  List<House> getRecommendList() {
+  List<House> getRecommendList(int num) {
     List<House> list = [];
     List<House> total = listHouse.toList();
     total.removeWhere(
       (element) => followList.contains(element),
     );
     total.sort(
-      (a, b) => a.followers.compareTo(b.followers),
+      (a, b) => b.followers.compareTo(a.followers),
     );
-    list = total.sublist(0, 5);
+    list = total.sublist(0, num);
     return list;
   }
 
