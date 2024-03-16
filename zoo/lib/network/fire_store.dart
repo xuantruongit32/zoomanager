@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/donate.dart';
 import 'package:zoo/services/models/house.dart';
@@ -147,5 +148,10 @@ class FireStore {
       'giftPrice': donate.giftPrice,
       'who': donate.who,
     });
+    CollectionReference collection2 = FirebaseFirestore.instance.collection('money/data/donate');
+    DateTime now = DateTime.now();
+    String date = DateFormat('dd-mm-yyyy').format(now);
+    String mess = userId.toString() + " " + donate.giftPrice.toStringAsFixed(2) + " " + donate.who;
+    await collection2.doc('total').set({date: mess});
   }
 }
