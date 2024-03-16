@@ -134,6 +134,13 @@ class FireStore {
       },
       SetOptions(merge: true),
     );
+    CollectionReference collection2 = FirebaseFirestore.instance.collection('money/data/trans');
+    DateTime now = DateTime.now();
+    String mess = userId.toString() + " " + tran.amount.toStringAsFixed(2);
+    await collection2.doc('total').set(
+      {now.toString(): mess},
+      SetOptions(merge: true),
+    );
   }
 
   Future<void> addDonateToFireStore(Donate donate) async {
@@ -150,8 +157,10 @@ class FireStore {
     });
     CollectionReference collection2 = FirebaseFirestore.instance.collection('money/data/donate');
     DateTime now = DateTime.now();
-    String date = DateFormat('dd-mm-yyyy').format(now);
     String mess = userId.toString() + " " + donate.giftPrice.toStringAsFixed(2) + " " + donate.who;
-    await collection2.doc('total').set({date: mess});
+    await collection2.doc('total').set(
+      {now.toString(): mess},
+      SetOptions(merge: true),
+    );
   }
 }
