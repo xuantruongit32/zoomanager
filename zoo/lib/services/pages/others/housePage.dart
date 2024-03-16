@@ -83,9 +83,9 @@ class HousePage extends StatelessWidget {
             Row(
               children: [
                 FollowButton(
-                  isFollowing: DataManager.checkHouseInListFollow(house.id),
-                  removeFollow: removeFollow(house),
-                  addFollow: addFollow(house),
+                  removeFollow: removeFollow,
+                  addFollow: addFollow,
+                  house: house,
                 )
               ],
             )

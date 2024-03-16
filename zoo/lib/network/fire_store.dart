@@ -36,7 +36,7 @@ class FireStore {
   Future<void> removeFollowedHouseFromFireStore(House house) async {
     try {
       final userId = getUserId();
-      CollectionReference collection = FirebaseFirestore.instance.collection('user/$userId/data');
+      CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/data');
       await collection.doc('followList').update({
         house.id: FieldValue.delete(),
       });

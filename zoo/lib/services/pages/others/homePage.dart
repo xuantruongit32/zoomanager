@@ -24,13 +24,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addFollow(var house) {
-    DataManager.followList.add(house);
-    FireStore().addFollowedHouseToFireStore(house);
+    FireStore().addFollowedHouseToFireStore(house).then(
+          (value) => DataManager.followList.add(house),
+        );
   }
 
   void removeFollow(var house) {
-    DataManager.followList.remove(house);
-    FireStore().removeFollowedHouseFromFireStore(house);
+    FireStore().removeFollowedHouseFromFireStore(house).then((value) {
+      DataManager.followList.remove(house);
+      print(DataManager.followList.length);
+      print(DataManager.followList.length);
+      print(DataManager.followList.length);
+      print(DataManager.followList.length);
+    });
   }
 
   void donate(double donate) {
