@@ -76,6 +76,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             date: DateTime.now(),
                           );
                           DataManager.trans.add(tran);
+                          DataManager.trans.sort(
+                            (a, b) => b.date.compareTo(a.date),
+                          );
                           FireStore().addTransactionToFireStore(tran);
                           _transactionSuccess = true;
                         });

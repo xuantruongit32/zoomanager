@@ -59,6 +59,9 @@ class GiftOptionWidget extends StatelessWidget {
                           beforeMoney: DataManager.money + gift.price,
                           afterMoney: DataManager.money);
                       DataManager.donateList.add(donate1);
+                      DataManager.donateList.sort(
+                        (a, b) => b.date.compareTo(a.date),
+                      );
                       FireStore().addDonateToFireStore(donate1).then((value) {
                         Navigator.of(context).pop();
                         confetti();

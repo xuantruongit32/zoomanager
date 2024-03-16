@@ -88,6 +88,9 @@ class FireStore {
             ),
           );
         }
+        DataManager.trans.sort(
+          (a, b) => b.date.compareTo(a.date),
+        );
       }
       DataManager.donateList.clear();
       QuerySnapshot<Map<String, dynamic>> snapshot3 =
@@ -107,6 +110,7 @@ class FireStore {
         );
         DataManager.donateList.add(donate);
       }
+      DataManager.donateList.sort((a, b) => b.date.compareTo(a.date));
     } catch (e) {
       print('Error fetching followed houses: $e');
     }
