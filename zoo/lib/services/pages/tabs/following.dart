@@ -6,8 +6,12 @@ import 'package:zoo/services/pages/reuseable/live_video.dart';
 import 'package:zoo/services/pages/reuseable/offline_house.dart';
 
 class FollowingPage extends StatefulWidget {
-  FollowingPage({Key? key, required this.addFollow, required this.removeFollow, required this.donate})
-      : super(key: key);
+  FollowingPage({
+    Key? key,
+    required this.addFollow,
+    required this.removeFollow,
+    required this.donate,
+  }) : super(key: key);
   final Function addFollow;
   final Function removeFollow;
   final Function donate;
@@ -17,7 +21,7 @@ class FollowingPage extends StatefulWidget {
 }
 
 class _FollowingPageState extends State<FollowingPage> {
-  bool checkFollowNull = DataManager.followList.isEmpty ? false : true;
+  bool checkFollowNull = DataManager.followList.isNotEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -25,72 +29,132 @@ class _FollowingPageState extends State<FollowingPage> {
       child: Scaffold(
         appBar: AppBar(),
         body: ListView(
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  for (var house in checkFollowNull ? DataManager.followList : DataManager.recommendedList)
-                    CircleHouse(
-                      house: house,
-                      addFollow: widget.addFollow,
-                      removeFollow: widget.removeFollow,
+          children: checkFollowNull
+              ? [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        for (var house in DataManager.followList)
+                          CircleHouse(
+                            house: house,
+                            addFollow: widget.addFollow,
+                            removeFollow: widget.removeFollow,
+                          ),
+                      ],
                     ),
+                  ),
+                  const Gap(20),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Your Live Houses',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Gap(10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (var house in DataManager.followList.where((house) => house.online).toList())
+                        LiveVideo(
+                          addFollow: widget.addFollow,
+                          removeFollow: widget.removeFollow,
+                          donate: widget.donate,
+                          house: house,
+                        ),
+                    ],
+                  ),
+                  const Gap(20),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Your Recommeded Houses',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Gap(10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (var house in DataManager().getRecommendList().where((house) => house.online).toList())
+                        LiveVideo(
+                          addFollow: widget.addFollow,
+                          removeFollow: widget.removeFollow,
+                          donate: widget.donate,
+                          house: house,
+                        ),
+                    ],
+                  ),
+                  const Divider(),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Your Offline House',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Gap(10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (var house in DataManager.followList.where((house) => !house.online).toList())
+                        OfflineHouse(
+                          addFollow: widget.addFollow,
+                          removeFollow: widget.removeFollow,
+                          house: house,
+                        ),
+                    ],
+                  ),
+                ]
+              : [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        for (var house in DataManager.followList)
+                          CircleHouse(
+                            house: house,
+                            addFollow: widget.addFollow,
+                            removeFollow: widget.removeFollow,
+                          ),
+                      ],
+                    ),
+                  ),
+                  const Gap(20),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Your Recommeded Houses',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Gap(10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (var house in DataManager().getRecommendList().where((house) => house.online).toList())
+                        LiveVideo(
+                          addFollow: widget.addFollow,
+                          removeFollow: widget.removeFollow,
+                          donate: widget.donate,
+                          house: house,
+                        ),
+                    ],
+                  ),
                 ],
-              ),
-            ),
-            const Gap(20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                checkFollowNull ? 'Your Live Houses' : 'Recommended for you',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const Gap(10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var house in checkFollowNull
-                    ? DataManager.followList.where((house) => house.online).toList()
-                    : DataManager.recommendedList)
-                  LiveVideo(
-                    addFollow: widget.addFollow,
-                    removeFollow: widget.removeFollow,
-                    donate: widget.donate,
-                    house: house,
-                  ),
-              ],
-            ),
-            const Divider(),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Your Offline House',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const Gap(10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (var house in checkFollowNull
-                    ? DataManager.followList.where((house) => house.online == false).toList()
-                    : DataManager.recommendedList)
-                  OfflineHouse(
-                    addFollow: widget.addFollow,
-                    removeFollow: widget.removeFollow,
-                    house: house,
-                  ),
-              ],
-            ),
-          ],
         ),
       ),
     );

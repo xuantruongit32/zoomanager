@@ -243,7 +243,6 @@ class DataManager {
     ),
   ];
 
-  static List<House> recommendedList = [];
   static List<House> followList = [];
 
   static List<Gift> listGift = [
@@ -270,6 +269,19 @@ class DataManager {
       total += donate.giftPrice;
     }
     return total;
+  }
+
+  List<House> getRecommendList() {
+    List<House> list = [];
+    List<House> total = listHouse;
+    total.removeWhere(
+      (element) => followList.contains(element),
+    );
+    total.sort(
+      (a, b) => a.followers.compareTo(b.followers),
+    );
+    list = total.sublist(0, 5);
+    return list;
   }
 
   static double money = 0;

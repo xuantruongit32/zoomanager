@@ -32,10 +32,6 @@ class _HomePageState extends State<HomePage> {
   void removeFollow(var house) {
     FireStore().removeFollowedHouseFromFireStore(house).then((value) {
       DataManager.followList.remove(house);
-      print(DataManager.followList.length);
-      print(DataManager.followList.length);
-      print(DataManager.followList.length);
-      print(DataManager.followList.length);
     });
   }
 
