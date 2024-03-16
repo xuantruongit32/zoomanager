@@ -86,7 +86,10 @@ class _HomePageState extends State<HomePage> {
       removeFollow: removeFollow,
       donate: donate,
     ),
-    AccountPage(),
+    AccountPage(
+      addFollow: addFollow,
+      removeFollow: removeFollow,
+    ),
   ];
 
   @override

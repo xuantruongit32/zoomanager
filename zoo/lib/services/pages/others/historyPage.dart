@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:zoo/data/data.dart';
+import 'package:zoo/services/pages/others/housePage.dart';
 
 class HistoryPage extends StatelessWidget {
-  const HistoryPage({super.key});
+  const HistoryPage({super.key, required this.addFollow, required this.removeFollow});
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +35,22 @@ class HistoryPage extends StatelessWidget {
                 child: DataTable(
                   columns: const [
                     DataColumn(
-                      label: Text('     Date'),
+                      label: Text('Date'),
                     ),
                     DataColumn(
-                      label: Text('  Gift'),
+                      label: Text('Gift'),
                     ),
                     DataColumn(
-                      label: Text(' Price'),
+                      label: Text('Price'),
                     ),
                     DataColumn(
-                      label: Text(' Donate'),
+                      label: Text('Donate'),
                     ),
                     DataColumn(
-                      label: Text(' Before'),
+                      label: Text('Before'),
                     ),
                     DataColumn(
-                      label: Text(' After'),
+                      label: Text('After'),
                     ),
                   ],
                   rows: DataManager.donateList
@@ -68,8 +73,27 @@ class HistoryPage extends StatelessWidget {
                               ),
                             ),
                             DataCell(
-                              Text(
-                                e.who.name,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          HousePage(house: e.who, addFollow: addFollow, removeFollow: removeFollow),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      e.who.name,
+                                    ),
+                                    const Gap(10),
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(e.who.avatar),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             DataCell(

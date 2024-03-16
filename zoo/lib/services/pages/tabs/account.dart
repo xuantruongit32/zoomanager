@@ -9,7 +9,9 @@ import 'package:zoo/services/pages/reuseable/customIcon.dart';
 import 'package:zoo/services/pages/reuseable/iconButtonText.dart';
 
 class AccountPage extends StatelessWidget {
-  const AccountPage({Key? key}) : super(key: key);
+  const AccountPage({Key? key, required this.addFollow, required this.removeFollow}) : super(key: key);
+  final Function addFollow;
+  final Function removeFollow;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,10 @@ class AccountPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HistoryPage(),
+                        builder: (context) => HistoryPage(
+                          addFollow: addFollow,
+                          removeFollow: removeFollow,
+                        ),
                       ),
                     );
                   },
