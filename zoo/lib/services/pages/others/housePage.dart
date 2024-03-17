@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:zoo/data/data.dart';
 import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/reuseable/follow_button.dart';
 
@@ -24,7 +23,7 @@ class HousePage extends StatelessWidget {
               child: Stack(
                 children: [
                   Image(
-                    image: NetworkImage(house.cover),
+                    image: NetworkImage(house.cover!),
                   ),
                   // Background cover
                   // Avatar and content
@@ -36,7 +35,7 @@ class HousePage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 80,
-                          backgroundImage: NetworkImage(house.avatar),
+                          backgroundImage: NetworkImage(house.avatar!),
                         ),
                         const Gap(10),
                         Expanded(
@@ -46,7 +45,7 @@ class HousePage extends StatelessWidget {
                               Align(
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
-                                  house.name,
+                                  house.name!,
                                   style: const TextStyle(
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
@@ -71,7 +70,7 @@ class HousePage extends StatelessWidget {
               ),
             ),
             Text(
-              house.story,
+              house.story!,
               overflow: TextOverflow.ellipsis,
               maxLines: 4,
               style: const TextStyle(

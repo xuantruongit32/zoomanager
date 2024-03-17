@@ -25,7 +25,7 @@ class CircleHouse extends StatelessWidget {
             padding: const EdgeInsets.all(2.0),
             child: CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(house.avatar),
+              backgroundImage: NetworkImage(house.avatar!),
             ),
           ),
         ),
@@ -34,7 +34,7 @@ class CircleHouse extends StatelessWidget {
             left: 10,
             child: Container(
               padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(color: house.online ? Colors.red : Colors.grey, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: house.online! ? Colors.red : Colors.grey, shape: BoxShape.circle),
             ))
       ],
     );

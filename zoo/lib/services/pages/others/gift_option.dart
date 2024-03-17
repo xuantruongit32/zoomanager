@@ -43,7 +43,7 @@ class GiftOptionWidget extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () {
-                    if (DataManager.money < gift.price) {
+                    if (DataManager.money < gift.price!) {
                       showDialog(
                           context: context,
                           builder: (context) => const ErrorDialog(errorMessage: 'Not enough money')).then((_) {
@@ -54,9 +54,9 @@ class GiftOptionWidget extends StatelessWidget {
                       Donate donate1 = Donate(
                           who: house,
                           date: DateTime.now(),
-                          giftPrice: gift.price,
-                          giftName: gift.name,
-                          beforeMoney: DataManager.money + gift.price,
+                          giftPrice: gift.price!,
+                          giftName: gift.name!,
+                          beforeMoney: DataManager.money + gift.price!,
                           afterMoney: DataManager.money);
                       DataManager.donateList.add(donate1);
                       DataManager.donateList.sort(
@@ -110,7 +110,7 @@ class GiftOptionWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.network(
-                gift.avatar,
+                gift.avatar!,
                 width: 60,
                 height: 60,
                 fit: BoxFit.cover,
@@ -118,7 +118,7 @@ class GiftOptionWidget extends StatelessWidget {
             ),
             const Gap(8),
             Text(
-              gift.name,
+              gift.name!,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

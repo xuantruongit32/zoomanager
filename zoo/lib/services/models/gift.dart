@@ -1,6 +1,6 @@
 class Gift {
   String? name;
-  int? price;
+  double? price;
   String? avatar;
 
   Gift({this.name, this.price, this.avatar});

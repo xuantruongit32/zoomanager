@@ -26,9 +26,9 @@ class _FollowingPageState extends State<FollowingPage> {
   List<House> listHouseOnline = List.from(DataManager.followList);
   @override
   void initState() {
-    listHouseOnline.sort((a, b) => b.online ? 1 : -1);
+    listHouseOnline.sort((a, b) => b.online! ? 1 : -1);
     List<House> total = List.from(DataManager.listHouse);
-    total.sort((a, b) => b.online ? 1 : -1);
+    total.sort((a, b) => b.online! ? 1 : -1);
     listHouseOnline.addAll(
       total.where(
         (element) => !listHouseOnline.contains(element),
@@ -73,7 +73,7 @@ class _FollowingPageState extends State<FollowingPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var house in DataManager.followList.where((house) => house.online).toList())
+                      for (var house in DataManager.followList.where((house) => house.online!).toList())
                         LiveVideo(
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,
@@ -97,7 +97,7 @@ class _FollowingPageState extends State<FollowingPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var house in DataManager().getRecommendList(5).where((house) => house.online).toList())
+                      for (var house in DataManager().getRecommendList(5).where((house) => house.online!).toList())
                         LiveVideo(
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,
@@ -121,7 +121,7 @@ class _FollowingPageState extends State<FollowingPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var house in DataManager.followList.where((house) => !house.online).toList())
+                      for (var house in DataManager.followList.where((house) => house.online == false).toList())
                         OfflineHouse(
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,
@@ -159,7 +159,7 @@ class _FollowingPageState extends State<FollowingPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var house in DataManager().getRecommendList(10).where((house) => house.online).toList())
+                      for (var house in DataManager().getRecommendList(10).where((house) => house.online!).toList())
                         LiveVideo(
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,

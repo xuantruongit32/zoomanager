@@ -49,7 +49,7 @@ class _SearchPageState extends State<SearchPage> {
                   final house = _filteredHouses[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                    child: house.online
+                    child: house.online!
                         ? LiveVideo(
                             addFollow: widget.addFollow,
                             removeFollow: widget.removeFollow,
@@ -76,7 +76,7 @@ class _SearchPageState extends State<SearchPage> {
       return [];
     } else {
       return DataManager.listHouse
-          .where((house) => house.name.toLowerCase().contains(_searchQuery.toLowerCase()))
+          .where((house) => house.name!.toLowerCase().contains(_searchQuery.toLowerCase()))
           .toList();
     }
   }

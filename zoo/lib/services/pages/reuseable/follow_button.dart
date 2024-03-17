@@ -19,7 +19,7 @@ class _FollowButtonState extends State<FollowButton> {
   late bool isFollowing;
   @override
   void initState() {
-    isFollowing = DataManager.checkHouseInListFollow(widget.house.id);
+    isFollowing = DataManager.checkHouseInListFollow(widget.house.id!);
     super.initState();
   }
 

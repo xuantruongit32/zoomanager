@@ -86,11 +86,11 @@ class HistoryPage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      e.who.name,
+                                      e.who.name!,
                                     ),
                                     const Gap(10),
                                     CircleAvatar(
-                                      backgroundImage: NetworkImage(e.who.avatar),
+                                      backgroundImage: NetworkImage(e.who.avatar!),
                                     ),
                                   ],
                                 ),

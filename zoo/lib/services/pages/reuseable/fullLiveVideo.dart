@@ -41,7 +41,7 @@ class FullLiveVideo extends StatelessWidget {
                       width: double.infinity,
                       height: MediaQuery.of(context).size.width / (16 / 9),
                       child: Image.network(
-                        house.cover,
+                        house.cover!,
                         fit: BoxFit.cover,
                       ),
                     ),

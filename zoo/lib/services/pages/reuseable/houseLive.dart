@@ -25,7 +25,7 @@ class HouseLive extends StatefulWidget {
 
 class _HouseLiveState extends State<HouseLive> {
   late final FlickManager flickManager = FlickManager(
-    videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(widget.house.video))..setLooping(true),
+    videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(widget.house.video!))..setLooping(true),
   );
 
   late ConfettiController _confettiController;
@@ -85,10 +85,10 @@ class _HouseLiveState extends State<HouseLive> {
           },
           child: Row(
             children: [
-              Text(widget.house.name),
+              Text(widget.house.name!),
               const Gap(20),
               CircleAvatar(
-                backgroundImage: NetworkImage(widget.house.avatar),
+                backgroundImage: NetworkImage(widget.house.avatar!),
               ),
             ],
           ),

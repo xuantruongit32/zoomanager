@@ -24,7 +24,7 @@ class FireStore {
 
       await collection.doc('followList').set(
         {
-          house.id: house.name,
+          house.id!: house.name!,
         },
         SetOptions(merge: true),
       );
@@ -59,9 +59,9 @@ class FireStore {
       if (followList != null) {
         for (var data in followList.entries) {
           var id = data.key;
-          House house = DataManager.getHouseById(id);
+          House? house = DataManager.getHouseById(id);
 
-          DataManager.followList.add(house);
+          DataManager.followList.add(house!);
         }
       }
       DocumentSnapshot<Map<String, dynamic>> snapshot1 =
@@ -98,14 +98,14 @@ class FireStore {
       for (QueryDocumentSnapshot<Map<String, dynamic>> document in snapshot3.docs) {
         Map<String, dynamic> data = document.data();
         DateTime date = DateTime.parse(data['date']);
-        House who = DataManager.getHouseById(data['who']);
+        House? who = DataManager.getHouseById(data['who']);
         Donate donate = Donate(
           date: date,
           beforeMoney: data['beforeMoney'],
           giftPrice: data['giftPrice'],
           giftName: data['giftName'],
           afterMoney: data['afterMoney'],
-          who: who,
+          who: who!,
         );
         DataManager.donateList.add(donate);
       }

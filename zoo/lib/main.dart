@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:zoo/auth/authPage.dart';
+import 'package:zoo/data/data.dart';
+import 'package:zoo/network/network_request.dart';
+import 'package:zoo/services/models/test.dart';
 import 'firebase_options.dart';
 import 'package:flutter/services.dart';
 
@@ -21,6 +24,12 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  late List<Test> test;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

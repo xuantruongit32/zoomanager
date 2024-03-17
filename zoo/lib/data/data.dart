@@ -5,13 +5,13 @@ import 'package:zoo/services/models/species.dart';
 import 'package:zoo/services/models/transaction.dart';
 
 class DataManager {
-  static House getHouseById(String id) {
+  static House? getHouseById(String id) {
     for (House house in listHouse) {
       if (house.id == id) {
         return house;
       }
     }
-    return House.empty();
+    return null;
   }
 
   static List<House> getHousesBySpecies(String species) {
@@ -32,15 +32,6 @@ class DataManager {
       }
     }
     return false;
-  }
-
-  static Gift getGiftById(String id) {
-    for (var gift in listGift) {
-      if (gift.id == id) {
-        return gift;
-      }
-    }
-    return Gift.empty();
   }
 
   static List<Species> listSpecies = [
@@ -85,7 +76,7 @@ class DataManager {
     ),
   ];
   static List<House> listHouse = [
-    House.old(
+    House(
       id: '0f5b5a51-ba95-464f-a1c7-dfba41d04043',
       name: 'Cozy Cottage1',
       num: 7,
@@ -96,10 +87,10 @@ class DataManager {
       cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
       online: true,
       followers: 1001,
-      species: listSpecies[1],
+      species: 'Lion',
       video: 'https://assets.mixkit.co/videos/preview/mixkit-macaw-parrot-feeding-on-a-branch-4669-large.mp4',
     ),
-    House.old(
+    House(
       id: '1e492d90-09e4-4843-ba4d-29848f8043e3',
       name: 'Cozy Cottage2',
       num: 5,
@@ -110,16 +101,16 @@ class DataManager {
       cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
       online: true,
       followers: 1701,
-      species: listSpecies[1],
+      species: 'Lion',
       video:
           'https://media.istockphoto.com/id/1470877058/vi/video/slow-motion-ni%E1%BB%81m-t%E1%BB%B1-h%C3%A0o-c%E1%BB%A7a-nh%E1%BB%AFng-ch%C3%BA-s%C6%B0-t%E1%BB%AD-%C4%91i-d%E1%BA%A1o-tr%C3%AAn-b%C3%A3i-c%E1%BB%8F-cao-%C4%91%E1%BA%A7y-n%E1%BA%AFng-tr%C3%AAn-khu-b%E1%BA%A3o-t%E1%BB%93n.mp4?s=mp4-640x640-is&k=20&c=Pw602hLEob4xhJGC3-N-ROerefLv73S5jYSmhm3TteU=',
     ),
-    House.old(
+    House(
       id: '2d61994b-37cc-41b2-9cb4-285dc3c26bc7',
       name: "Pride Rock",
       online: true,
       followers: 5000,
-      species: listSpecies[1],
+      species: 'Lion',
       num: 2,
       story:
           "Pride Rock is a sanctuary for lions, where they gather to celebrate the circle of life. It's a place of tradition, where lionesses raise their cubs and where the wisdom of the elders is passed down through generations. The echoing roars of lions can be heard from miles away, signifying the pride's strength and unity.",
@@ -129,12 +120,12 @@ class DataManager {
       video:
           "https://media.istockphoto.com/id/1340462090/video/slow-moiton-close-up-magnificient-male-lion-walking-towards-camera-in-african-savannah.mp4?s=mp4-640x640-is&k=20&c=uCRCUPwC3WFrF32H9mCjDHPeo6BQKJDzFoNrowUxyxA=",
     ),
-    House.old(
+    House(
       id: '3c9de8e2-13ad-4a9f-a059-8b8fc510cc77',
       name: "Elephant Haven",
       online: true,
       followers: 3000,
-      species: listSpecies[2],
+      species: 'Elephant',
       num: 5,
       story:
           "Elephant Haven is a conservation center dedicated to protecting and rehabilitating elephants. Here, rescued elephants find solace and care after facing hardships such as poaching and habitat loss. Visitors to Elephant Haven witness the incredible resilience of these majestic creatures and learn about the importance of their conservation.",
@@ -145,12 +136,12 @@ class DataManager {
       video:
           "https://media.istockphoto.com/id/1344914411/video/african-bush-elephant-loxodonta-africana-lonely-elephant-walking-in-savannah-of-the-amboseli.mp4?s=mp4-640x640-is&k=20&c=L7-Y7pwRLNW4OBJ5ZV0MtWYveFGGoJD1c88tzK3mlSg=",
     ),
-    House.old(
+    House(
       id: '4b3b65d9-52a2-4f05-8666-2c9b7771d312',
       name: "Tiger Territory",
       online: false,
       followers: 4500,
-      species: listSpecies[3],
+      species: 'Tiger',
       num: 1,
       story:
           "Tiger Territory is a reserve dedicated to preserving the habitat of endangered tigers. Here, amidst dense forests and winding rivers, tigers roam freely in their natural environment. Conservationists work tirelessly to protect these magnificent predators from threats such as poaching and habitat destruction.",
@@ -161,12 +152,12 @@ class DataManager {
       video:
           "https://cdn.pixabay.com/vimeo/786403437/tiger-145320.mp4?width=640&hash=cbc28d222774e1e78c0c04b517af8d392473f1da",
     ),
-    House.old(
+    House(
       id: '5a6173c2-91d2-4fc7-9b3a-f9b354f0b4df',
       name: "Giraffe Grove",
       online: true,
       followers: 2500,
-      species: listSpecies[4],
+      species: 'Giraffe',
       num: 4,
       story:
           "Giraffe Grove is a sanctuary where giraffes roam freely in their natural habitat. Tall acacia trees dot the landscape, providing ample food for these gentle giants. Visitors can observe giraffes as they gracefully move through the savanna, their long necks reaching high into the treetops.",
@@ -177,12 +168,12 @@ class DataManager {
       video:
           "https://cdn.pixabay.com/vimeo/908857507/giraffe-198781.mp4?width=640&hash=b854ab94c666f4ee8097a3cf08553c4265bd320d",
     ),
-    House.old(
+    House(
       id: '6d72d4a9-b2e8-44c1-ba64-f47b5df05e03',
       name: "Polar Paradise",
       online: true,
       followers: 4000,
-      species: listSpecies[5],
+      species: 'Polar Bear',
       num: 2,
       story:
           "Polar Paradise is an Arctic refuge where polar bears can thrive in their icy home. Amidst vast expanses of snow and ice, polar bears hunt seals and raise their young. Researchers stationed here study polar bear behavior and the effects of climate change on their fragile ecosystem.",
@@ -193,12 +184,12 @@ class DataManager {
       video:
           "https://cdn.pixabay.com/vimeo/284467858/icebear-17715.mp4?width=1280&hash=8a127c4c9958e74012b0ffad63b1229e7a1ee633",
     ),
-    House.old(
+    House(
       id: '7f53df1c-793f-48e5-88f6-69b75900e88a',
       name: "Lion's Den",
       online: false,
       followers: 3200,
-      species: listSpecies[1],
+      species: 'Lion',
       num: 5,
       story:
           "Lion's Den is a community of lions, where they share stories and experiences. It's a place of camaraderie, where young lions playfully spar and older lions impart their wisdom. As night falls, the pride gathers together, basking in the warmth of their companionship.",
@@ -209,12 +200,12 @@ class DataManager {
       video:
           "https://cdn.pixabay.com/vimeo/700585495/lion-animal-114145.mp4?width=640&hash=cecf9f9a6a0d999d738a125430c7ddca15110ef9",
     ),
-    House.old(
+    House(
       id: '8e0f5f9c-af1b-4a8d-b8b0-7b8211a1f0a0',
       name: "Elephant Sanctuary",
       online: true,
       followers: 2800,
-      species: listSpecies[2],
+      species: 'Elephant',
       num: 4,
       story:
           "Elephant Sanctuary provides a safe haven for rescued elephants to live peacefully. Here, elephants form bonds with their caretakers and rediscover the joys of freedom. Visitors to the sanctuary witness the deep emotional connections between elephants and the dedicated staff who care for them.",
@@ -225,12 +216,12 @@ class DataManager {
       video:
           "https://cdn.pixabay.com/vimeo/577427903/elephant-81760.mp4?width=1280&hash=ead065152c26a1c392c78dcc2e38442c41496525",
     ),
-    House.old(
+    House(
       id: '9c83d1a0-5a2e-4999-81b6-b0d76b01186d',
       name: "Tiger Haven",
       online: false,
       followers: 3915,
-      species: listSpecies[4],
+      species: 'Tiger',
       num: 8,
       story:
           "Tiger Haven is committed to protecting and preserving tiger populations in the wild. Conservationists and researchers work hand in hand to monitor tiger habitats and combat illegal poaching. Through education and advocacy, Tiger Haven aims to ensure a future where tigers can thrive in the wild.",
@@ -278,7 +269,7 @@ class DataManager {
       (element) => followList.contains(element),
     );
     total.sort(
-      (a, b) => b.followers.compareTo(a.followers),
+      (a, b) => b.followers!.compareTo(a.followers!),
     );
     list = total.sublist(0, num);
     return list;

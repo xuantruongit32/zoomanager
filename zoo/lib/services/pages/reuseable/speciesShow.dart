@@ -27,7 +27,7 @@ class SpeciesShow extends StatelessWidget {
                 donate: donate,
                 addFollow: addFollow,
                 removeFollow: removeFollow,
-                houseList: DataManager.getHousesBySpeciesId(species.id),
+                houseList: DataManager.getHousesBySpecies(species.name),
               ),
             ),
           );
