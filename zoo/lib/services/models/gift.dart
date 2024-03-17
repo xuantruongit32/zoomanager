@@ -1,17 +1,21 @@
-import 'package:uuid/uuid.dart';
-
-var uuid = const Uuid();
-
 class Gift {
-  Gift.old({required this.name, required this.price, required this.avatar, required this.id});
-  Gift.empty()
-      : name = '',
-        price = 0,
-        avatar = '',
-        id = '';
-  Gift({required this.name, required this.price, required this.avatar}) : id = uuid.v4();
-  String name;
-  double price;
-  String avatar;
-  final String id;
+  String? name;
+  int? price;
+  String? avatar;
+
+  Gift({this.name, this.price, this.avatar});
+
+  Gift.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    price = json['price'];
+    avatar = json['avatar'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['name'] = this.name;
+    data['price'] = this.price;
+    data['avatar'] = this.avatar;
+    return data;
+  }
 }

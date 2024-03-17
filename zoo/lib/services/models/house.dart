@@ -1,50 +1,52 @@
-import 'package:uuid/uuid.dart';
-import 'package:zoo/services/models/species.dart';
-
-var uuid = const Uuid();
-
 class House {
+  String? id;
+  String? name;
+  int? num;
+  String? story;
+  String? avatar;
+  String? cover;
+  bool? online;
+  int? followers;
+  String? species;
+  String? video;
+
   House(
-      {required this.name,
-      required this.online,
-      required this.followers,
-      required this.species,
-      required this.num,
-      required this.story,
-      required this.avatar,
-      required this.cover,
-      required this.video})
-      : id = uuid.v4();
-  House.old(
-      {required this.name,
-      required this.online,
-      required this.followers,
-      required this.species,
-      required this.num,
-      required this.story,
-      required this.avatar,
-      required this.cover,
-      required this.video,
-      required this.id});
-  House.empty()
-      : name = '',
-        id = '',
-        online = false,
-        species = Species.empty(),
-        followers = 0,
-        cover = '',
-        avatar = '',
-        story = '',
-        video = '',
-        num = 0;
-  String name;
-  int num;
-  String story;
-  String avatar;
-  String cover;
-  String video;
-  bool online;
-  int followers;
-  Species species;
-  final String id;
+      {this.id,
+      this.name,
+      this.num,
+      this.story,
+      this.avatar,
+      this.cover,
+      this.online,
+      this.followers,
+      this.species,
+      this.video});
+
+  House.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    num = json['num'];
+    story = json['story'];
+    avatar = json['avatar'];
+    cover = json['cover'];
+    online = json['online'];
+    followers = json['followers'];
+    species = json['species'];
+    video = json['video'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['num'] = this.num;
+    data['story'] = this.story;
+    data['avatar'] = this.avatar;
+    data['cover'] = this.cover;
+    data['online'] = this.online;
+    data['followers'] = this.followers;
+    data['species'] = this.species;
+    data['video'] = this.video;
+    return data;
+  }
 }

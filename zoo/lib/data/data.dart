@@ -14,11 +14,11 @@ class DataManager {
     return House.empty();
   }
 
-  static List<House> getHousesBySpeciesId(String speciesId) {
+  static List<House> getHousesBySpecies(String species) {
     List<House> houses = [];
 
     for (House house in listHouse) {
-      if (house.species.id == speciesId) {
+      if (house.species == species) {
         houses.add(house);
       }
     }

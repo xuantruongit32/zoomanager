@@ -38,7 +38,7 @@ class FireStore {
       final userId = getUserId();
       CollectionReference collection = FirebaseFirestore.instance.collection('users/$userId/data');
       await collection.doc('followList').update({
-        house.id: FieldValue.delete(),
+        house.id!: FieldValue.delete(),
       });
     } catch (e) {
       print("Error: $e");
@@ -162,7 +162,7 @@ class FireStore {
     CollectionReference collection2 = FirebaseFirestore.instance.collection('money/data/donate');
     DateTime now = DateTime.now();
     String mess =
-        userId.toString() + "_" + donate.giftPrice.toStringAsFixed(2) + "_" + donate.who.name + "_" + donate.who.id;
+        userId.toString() + "_" + donate.giftPrice.toStringAsFixed(2) + "_" + donate.who.name! + "_" + donate.who.id!;
     await collection2.doc('total').set(
       {now.toString(): mess},
       SetOptions(merge: true),
