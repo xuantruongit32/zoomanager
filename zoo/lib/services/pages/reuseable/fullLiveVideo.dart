@@ -46,6 +46,7 @@ class FullLiveVideo extends StatelessWidget {
                       ),
                     ),
                     OfflineHouse(
+                      donate: donate,
                       house: house,
                       addFollow: addFollow,
                       removeFollow: removeFollow,

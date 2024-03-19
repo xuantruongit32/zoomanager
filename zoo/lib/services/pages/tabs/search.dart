@@ -57,6 +57,7 @@ class _SearchPageState extends State<SearchPage> {
                             donate: widget.donate,
                           )
                         : OfflineHouse(
+                            donate: widget.donate,
                             house: house,
                             addFollow: widget.addFollow,
                             removeFollow: widget.removeFollow,

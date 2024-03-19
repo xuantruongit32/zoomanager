@@ -4,11 +4,13 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/others/housePage.dart';
 
 class OfflineHouse extends StatelessWidget {
-  const OfflineHouse({Key? key, required this.house, required this.addFollow, required this.removeFollow})
+  const OfflineHouse(
+      {Key? key, required this.house, required this.addFollow, required this.removeFollow, required this.donate})
       : super(key: key);
 
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   final House house;
 
@@ -21,7 +23,12 @@ class OfflineHouse extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HousePage(house: house, addFollow: addFollow, removeFollow: removeFollow),
+              builder: (context) => HousePage(
+                house: house,
+                addFollow: addFollow,
+                removeFollow: removeFollow,
+                donate: donate,
+              ),
             ),
           );
         },

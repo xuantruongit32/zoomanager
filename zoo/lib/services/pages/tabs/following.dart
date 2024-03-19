@@ -51,6 +51,7 @@ class _FollowingPageState extends State<FollowingPage> {
                       children: [
                         for (var house in listHouseOnline)
                           CircleHouse(
+                            donate: widget.donate,
                             house: house,
                             addFollow: widget.addFollow,
                             removeFollow: widget.removeFollow,
@@ -123,6 +124,7 @@ class _FollowingPageState extends State<FollowingPage> {
                     children: [
                       for (var house in DataManager.followList.where((house) => house.online == false).toList())
                         OfflineHouse(
+                          donate: widget.donate,
                           addFollow: widget.addFollow,
                           removeFollow: widget.removeFollow,
                           house: house,
@@ -137,6 +139,7 @@ class _FollowingPageState extends State<FollowingPage> {
                       children: [
                         for (var house in listHouseOnline)
                           CircleHouse(
+                            donate: widget.donate,
                             house: house,
                             addFollow: widget.addFollow,
                             removeFollow: widget.removeFollow,

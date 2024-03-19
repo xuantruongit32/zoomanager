@@ -6,9 +6,10 @@ import 'package:zoo/data/data.dart';
 import 'package:zoo/services/pages/others/housePage.dart';
 
 class HistoryPage extends StatelessWidget {
-  const HistoryPage({super.key, required this.addFollow, required this.removeFollow});
+  const HistoryPage({super.key, required this.addFollow, required this.removeFollow, required this.donate});
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +79,12 @@ class HistoryPage extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          HousePage(house: e.who, addFollow: addFollow, removeFollow: removeFollow),
+                                      builder: (context) => HousePage(
+                                        house: e.who,
+                                        addFollow: addFollow,
+                                        removeFollow: removeFollow,
+                                        donate: donate,
+                                      ),
                                     ),
                                   );
                                 },

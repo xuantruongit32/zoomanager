@@ -83,6 +83,7 @@ class _HomePageState extends State<HomePage> {
       donate: donate,
     ),
     AccountPage(
+      donate: donate,
       addFollow: addFollow,
       removeFollow: removeFollow,
     ),

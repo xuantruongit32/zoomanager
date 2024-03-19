@@ -3,10 +3,12 @@ import 'package:zoo/services/models/house.dart';
 import 'package:zoo/services/pages/others/housePage.dart';
 
 class CircleHouse extends StatelessWidget {
-  const CircleHouse({super.key, required this.house, required this.addFollow, required this.removeFollow});
+  const CircleHouse(
+      {super.key, required this.house, required this.addFollow, required this.removeFollow, required this.donate});
   final House house;
   final Function addFollow;
   final Function removeFollow;
+  final Function donate;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,12 @@ class CircleHouse extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HousePage(house: house, addFollow: addFollow, removeFollow: removeFollow),
+                builder: (context) => HousePage(
+                  house: house,
+                  addFollow: addFollow,
+                  removeFollow: removeFollow,
+                  donate: donate,
+                ),
               ),
             );
           },

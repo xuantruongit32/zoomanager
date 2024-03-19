@@ -78,8 +78,12 @@ class _HouseLiveState extends State<HouseLive> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    HousePage(house: widget.house, addFollow: widget.addFollow, removeFollow: widget.removeFollow),
+                builder: (context) => HousePage(
+                  house: widget.house,
+                  addFollow: widget.addFollow,
+                  removeFollow: widget.removeFollow,
+                  donate: widget.donate,
+                ),
               ),
             );
           },
