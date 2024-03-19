@@ -68,7 +68,7 @@ class DataManager {
           "The giraffe is the tallest living terrestrial animal, known for its long neck and distinct spotted pattern. Giraffes are herbivores, feeding on leaves from trees and shrubs. Their long necks enable them to reach high branches that other animals cannot access. Giraffes are social animals, living in loose herds that can vary in size and composition. They have a unique reproductive behavior known as 'necking,' where males engage in neck-to-neck combat to establish dominance and mating rights. Giraffes are found in savannas, grasslands, and open woodlands of Africa.",
     ),
     Species(
-      name: "Polar Bear",
+      name: "Bear",
       avatar:
           "https://i.natgeofe.com/k/55256f3f-2cf1-4b93-9d95-a13b0faa30a6/Mom-and-Babies_Polar-Bear_KIDS_0223-crop_3x2.jpg",
       des:
@@ -230,7 +230,7 @@ class DataManager {
   static List<House> followList = [];
 
   static List<Gift> listGift = [
-    Gift(name: 'banana', price: 10, avatar: 'https://cdn-icons-png.freepik.com/512/6532/6532383.png'),
+   Gift(name: 'banana', price: 10, avatar: 'https://cdn-icons-png.freepik.com/512/6532/6532383.png'),
     Gift(name: 'apple', price: 20, avatar: 'https://www.iconpacks.net/icons/2/free-apple-icon-3155-thumb.png'),
     Gift(name: 'grapes', price: 20, avatar: 'https://cdn-icons-png.flaticon.com/512/765/765560.png'),
     Gift(name: 'watermelon', price: 25, avatar: 'https://cdn-icons-png.flaticon.com/512/2224/2224321.png'),

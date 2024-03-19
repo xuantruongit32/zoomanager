@@ -29,7 +29,7 @@ class House {
     story = json['story'];
     avatar = json['avatar'];
     cover = json['cover'];
-    online = json['online'];
+    online = json['onl'];
     followers = json['followers'];
     species = json['species'];
     video = json['video'];

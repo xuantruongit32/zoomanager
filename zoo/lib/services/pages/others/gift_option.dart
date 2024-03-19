@@ -54,7 +54,7 @@ class GiftOptionWidget extends StatelessWidget {
                       Donate donate1 = Donate(
                           who: house,
                           date: DateTime.now(),
-                          giftPrice: gift.price!,
+                          giftPrice: gift.price.toDouble(),
                           giftName: gift.name!,
                           beforeMoney: DataManager.money + gift.price!,
                           afterMoney: DataManager.money);

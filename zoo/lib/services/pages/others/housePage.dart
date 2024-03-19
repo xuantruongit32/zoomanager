@@ -7,7 +7,11 @@ import 'package:zoo/services/pages/reuseable/houseLive.dart';
 
 class HousePage extends StatelessWidget {
   const HousePage(
-      {Key? key, required this.house, required this.addFollow, required this.removeFollow, required this.donate})
+      {Key? key,
+      required this.house,
+      required this.addFollow,
+      required this.removeFollow,
+      required this.donate})
       : super(key: key);
 
   final Function addFollow;
@@ -60,7 +64,9 @@ class HousePage extends StatelessWidget {
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
                                   house.followers.toString() + ' Followers',
-                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
                                 ),
                               )
                             ],
@@ -102,20 +108,25 @@ class HousePage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => HouseLive(
-                                    house: house, donate: donate, addFollow: addFollow, removeFollow: removeFollow),
+                                    house: house,
+                                    donate: donate,
+                                    addFollow: addFollow,
+                                    removeFollow: removeFollow),
                               ),
                             );
                           }
                         : () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Center(child: Text('No Live Stream Available')),
+                                content: Center(
+                                    child: Text('No Live Stream Available')),
                                 duration: Duration(seconds: 2),
                               ),
                             );
                           },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
                       decoration: BoxDecoration(
                         color: house.online! ? Colors.purple : Colors.grey[300],
                         borderRadius: BorderRadius.circular(20),
@@ -131,7 +142,8 @@ class HousePage extends StatelessWidget {
                           Text(
                             'Live Stream',
                             style: TextStyle(
-                              color: house.online! ? Colors.white : Colors.purple,
+                              color:
+                                  house.online! ? Colors.white : Colors.purple,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

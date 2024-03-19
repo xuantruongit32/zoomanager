@@ -1,6 +1,6 @@
 class Gift {
   String name = '';
-  double price = 0;
+  int price = 0;
   String avatar = '';
 
   Gift({required this.name, required this.price, required this.avatar});
