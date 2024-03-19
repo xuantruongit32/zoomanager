@@ -8,14 +8,14 @@ class Gift {
   Gift.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     price = json['price'];
-    avatar = json['avatar'];
+    avatar = json['image'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = this.name;
     data['price'] = this.price;
-    data['avatar'] = this.avatar;
+    data['image'] = this.avatar;
     return data;
   }
 }

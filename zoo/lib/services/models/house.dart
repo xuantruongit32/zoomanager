@@ -43,7 +43,7 @@ class House {
     data['story'] = this.story;
     data['avatar'] = this.avatar;
     data['cover'] = this.cover;
-    data['online'] = this.online;
+    data['onl'] = this.online;
     data['followers'] = this.followers;
     data['species'] = this.species;
     data['video'] = this.video;
