@@ -25,8 +25,16 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   void initState() {
-    NetworkRequest.fetchListHouse().then((value) => DataManager.listHouse = value);
-    NetworkRequest.fetchListGift().then((value) => DataManager.listGift = value);
+    NetworkRequest.fetchListHouse().then(
+      (value) => setState(() {
+        DataManager.listHouse = value;
+      }),
+    );
+    NetworkRequest.fetchListGift().then(
+      (value) => setState(() {
+        DataManager.listGift = value;
+      }),
+    );
     super.initState();
   }
 
