@@ -50,7 +50,7 @@ class GiftOptionWidget extends StatelessWidget {
                         Navigator.of(context).pop();
                       });
                     } else {
-                      donate(gift.price);
+                      donate(gift.price!);
                       Donate donate1 = Donate(
                           who: house,
                           date: DateTime.now(),
@@ -127,7 +127,7 @@ class GiftOptionWidget extends StatelessWidget {
             ),
             const Gap(4),
             Text(
-              '\$${gift.price}',
+              '\$${gift.price!}',
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.grey,

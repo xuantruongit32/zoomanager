@@ -1,9 +1,9 @@
 class Gift {
-  String? name;
-  double? price;
-  String? avatar;
+  String name = '';
+  double price = 0;
+  String avatar = '';
 
-  Gift({this.name, this.price, this.avatar});
+  Gift({required this.name, required this.price, required this.avatar});
 
   Gift.fromJson(Map<String, dynamic> json) {
     name = json['name'];

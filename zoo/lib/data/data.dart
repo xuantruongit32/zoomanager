@@ -49,14 +49,14 @@ class DataManager {
     ),
     Species(
       name: "Elephant",
-      avatar: "https://cdn.britannica.com/02/152302-050-1A984FCB/African-savanna-elephant.jpg",
+      avatar: "https://scx2.b-cdn.net/gfx/news/hires/2020/2-africaneleph.jpg",
       des:
           "The elephant is the largest land animal, characterized by its long trunk and tusks. Elephants are herbivores, feeding primarily on grasses, leaves, bark, and fruits. They have a highly developed social structure, living in matriarchal herds led by the oldest and most experienced female, called the matriarch. Elephants communicate through a variety of vocalizations, body language, and tactile signals, displaying complex behaviors such as mourning for their dead and showing empathy towards others. Unfortunately, elephants are facing threats from habitat loss, poaching for their ivory tusks, and human-wildlife conflict.",
     ),
     Species(
       name: "Tiger",
       avatar:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Walking_tiger_female.jpg/1200px-Walking_tiger_female.jpg",
+          "https://assets.wwf.org.au/image/upload/c_fill,g_auto,w_1400/f_auto/q_auto/v1/elcom/416/tiger_in_a_river_flickr_pexels?q=75",
       des:
           "The tiger is the largest cat species, recognizable by its pattern of dark vertical stripes on reddish-orange fur. Tigers are solitary hunters, primarily preying on ungulates such as deer and wild boar. They are territorial animals, with each tiger having a home range that it defends against intruders. Tigers are apex predators, playing a crucial role in maintaining the balance of their ecosystems. However, they are endangered due to habitat loss, poaching for their skins and body parts, and conflict with humans. Conservation efforts are underway to protect and preserve tiger populations in the wild.",
     ),
@@ -78,32 +78,31 @@ class DataManager {
   static List<House> listHouse = [
     House(
       id: '0f5b5a51-ba95-464f-a1c7-dfba41d04043',
-      name: 'Cozy Cottage1',
-      num: 7,
+      name: 'Avian Haven',
+      num: 12,
       story:
-          'A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.',
+          'Avian Haven is a sanctuary for birds of all kinds, from colorful parrots to majestic eagles. Here, injured and orphaned birds receive medical care and rehabilitation, allowing them to soar through the skies once again. Visitors to Avian Haven marvel at the diversity of bird species and learn about the importance of protecting avian habitats.',
       avatar:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
-      cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
+          'https://www.barrie.ca/sites/default/files/styles/16_9/public/2023-05/Bird-Friendly-City.jpg?itok=g7kLFo8Q',
+      cover: 'https://timelinecovers.pro/facebook-cover/download/forest-birds-in-love-facebook-cover.jpg',
       online: true,
       followers: 1001,
-      species: 'Lion',
+      species: 'Bird',
       video: 'https://assets.mixkit.co/videos/preview/mixkit-macaw-parrot-feeding-on-a-branch-4669-large.mp4',
     ),
     House(
       id: '1e492d90-09e4-4843-ba4d-29848f8043e3',
-      name: 'Cozy Cottage2',
-      num: 5,
+      name: 'Feather',
+      num: 14,
       story:
-          'A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.A quaint little cottage nestled in the woods.',
-      avatar:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg',
-      cover: 'https://i.pinimg.com/originals/ac/bf/99/acbf998a4203718de402e571fb106775.jpg',
+          'Feathered Friends Haven is a haven for bird enthusiasts, where they can observe and interact with a variety of feathered friends. From tiny hummingbirds to graceful swans, this sanctuary offers a glimpse into the fascinating world of birds. Visitors to Feathered Friends Haven can participate in educational programs and birdwatching tours, fostering a deeper appreciation for avian diversity.',
+      avatar: 'https://i.natgeofe.com/k/520e971d-7a22-4a6f-90dc-258df74e45bc/american-goldfinch_2x1.jpg',
+      cover: 'https://timelinecovers.pro/facebook-cover/download/birds-on-a-branch-having-fun-facebook-cover.jpg',
       online: true,
       followers: 1701,
-      species: 'Lion',
+      species: 'Bird',
       video:
-          'https://media.istockphoto.com/id/1470877058/vi/video/slow-motion-ni%E1%BB%81m-t%E1%BB%B1-h%C3%A0o-c%E1%BB%A7a-nh%E1%BB%AFng-ch%C3%BA-s%C6%B0-t%E1%BB%AD-%C4%91i-d%E1%BA%A1o-tr%C3%AAn-b%C3%A3i-c%E1%BB%8F-cao-%C4%91%E1%BA%A7y-n%E1%BA%AFng-tr%C3%AAn-khu-b%E1%BA%A3o-t%E1%BB%93n.mp4?s=mp4-640x640-is&k=20&c=Pw602hLEob4xhJGC3-N-ROerefLv73S5jYSmhm3TteU=',
+          'https://media.istockphoto.com/id/1573971440/vi/video/c%E1%BA%ADn-c%E1%BA%A3nh-ch%C3%BA-ch%C3%B3-%C4%91u%C3%B4i-ng%E1%BB%B1a-v%C3%A0ng-%C4%91%E1%BA%A7y-m%C3%A0u-s%E1%BA%AFc-%C4%91%E1%BA%ADu-gi%E1%BB%AFa-b%E1%BB%A5i-li%E1%BB%85u-v%C3%A0-h%C3%A1t-v%C3%A0o-m%E1%BB%99t-bu%E1%BB%95i-t%E1%BB%91i-m%C3%B9a-h%C3%A8.mp4?s=mp4-640x640-is&k=20&c=F3YPnLogqeweVQwLtX6lkNpAxzzH4KOHxg7vk3l420w=',
     ),
     House(
       id: '2d61994b-37cc-41b2-9cb4-285dc3c26bc7',
@@ -122,17 +121,16 @@ class DataManager {
     ),
     House(
       id: '3c9de8e2-13ad-4a9f-a059-8b8fc510cc77',
-      name: "Elephant Haven",
+      name: "Elephant Han",
       online: true,
       followers: 3000,
       species: 'Elephant',
       num: 5,
       story:
-          "Elephant Haven is a conservation center dedicated to protecting and rehabilitating elephants. Here, rescued elephants find solace and care after facing hardships such as poaching and habitat loss. Visitors to Elephant Haven witness the incredible resilience of these majestic creatures and learn about the importance of their conservation.",
+          "Elephant Han is a conservation center dedicated to protecting and rehabilitating elephants. Here, rescued elephants find solace and care after facing hardships such as poaching and habitat loss. Visitors to Elephant Haven witness the incredible resilience of these majestic creatures and learn about the importance of their conservation.",
       avatar:
           "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWxlcGhhbnR8ZW58MHx8MHx8fDA%3D",
-      cover:
-          "https://plus.unsplash.com/premium_photo-1666670060278-eef65a99ec09?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZWxlcGhhbnR8ZW58MHx8MHx8fDA%3D",
+      cover: "https://i.pinimg.com/originals/03/20/c3/0320c374f373d83d5a8ca07cd760fd19.jpg",
       video:
           "https://media.istockphoto.com/id/1344914411/video/african-bush-elephant-loxodonta-africana-lonely-elephant-walking-in-savannah-of-the-amboseli.mp4?s=mp4-640x640-is&k=20&c=L7-Y7pwRLNW4OBJ5ZV0MtWYveFGGoJD1c88tzK3mlSg=",
     ),
@@ -147,8 +145,7 @@ class DataManager {
           "Tiger Territory is a reserve dedicated to preserving the habitat of endangered tigers. Here, amidst dense forests and winding rivers, tigers roam freely in their natural environment. Conservationists work tirelessly to protect these magnificent predators from threats such as poaching and habitat destruction.",
       avatar:
           "https://plus.unsplash.com/premium_photo-1664302784209-bb0dea430495?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGlnZXJ8ZW58MHx8MHx8fDA%3D",
-      cover:
-          "https://images.unsplash.com/photo-1605092676920-8ac5ae40c7c8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGlnZXJ8ZW58MHx8MHx8fDA%3D",
+      cover: "https://timelinecovers.pro/facebook-cover/download/tiger-hiding-facebook-cover.jpg",
       video:
           "https://cdn.pixabay.com/vimeo/786403437/tiger-145320.mp4?width=640&hash=cbc28d222774e1e78c0c04b517af8d392473f1da",
     ),
@@ -163,8 +160,7 @@ class DataManager {
           "Giraffe Grove is a sanctuary where giraffes roam freely in their natural habitat. Tall acacia trees dot the landscape, providing ample food for these gentle giants. Visitors can observe giraffes as they gracefully move through the savanna, their long necks reaching high into the treetops.",
       avatar:
           "https://images.unsplash.com/photo-1534567110243-8875d64ca8ff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2lyYWZmZXxlbnwwfHwwfHx8MA%3D%3D",
-      cover:
-          "https://images.unsplash.com/photo-1547721064-da6cfb341d50?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2lyYWZmZXxlbnwwfHwwfHx8MA%3D%3D",
+      cover: "https://i.pinimg.com/originals/d7/3a/6c/d73a6c8810cceaa433e43b028e0033b7.jpg",
       video:
           "https://cdn.pixabay.com/vimeo/908857507/giraffe-198781.mp4?width=640&hash=b854ab94c666f4ee8097a3cf08553c4265bd320d",
     ),
@@ -178,9 +174,9 @@ class DataManager {
       story:
           "Polar Paradise is an Arctic refuge where polar bears can thrive in their icy home. Amidst vast expanses of snow and ice, polar bears hunt seals and raise their young. Researchers stationed here study polar bear behavior and the effects of climate change on their fragile ecosystem.",
       avatar:
-          "https://plus.unsplash.com/premium_photo-1664012343193-e1f1c6b13e2e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9sYXIlMjBiZWFyfGVufDB8fDB8fHww",
+          "https://hips.hearstapps.com/hmg-prod/images/bear-1549900314.jpg?crop=0.668xw:1.00xh;0.129xw,0&resize=640:*",
       cover:
-          "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9sYXIlMjBiZWFyfGVufDB8fDB8fHww",
+          "https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2022/07/Polar-Bear-playing-in-the-snow-by-Eddy-Savage-1280x640.png",
       video:
           "https://cdn.pixabay.com/vimeo/284467858/icebear-17715.mp4?width=1280&hash=8a127c4c9958e74012b0ffad63b1229e7a1ee633",
     ),
@@ -195,24 +191,22 @@ class DataManager {
           "Lion's Den is a community of lions, where they share stories and experiences. It's a place of camaraderie, where young lions playfully spar and older lions impart their wisdom. As night falls, the pride gathers together, basking in the warmth of their companionship.",
       avatar:
           "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlvbnxlbnwwfHwwfHx8MA%3D%3D",
-      cover:
-          "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      cover: "https://colorfully.eu/wp-content/uploads/2013/01/lion-black-facebook-cover.jpg",
       video:
           "https://cdn.pixabay.com/vimeo/700585495/lion-animal-114145.mp4?width=640&hash=cecf9f9a6a0d999d738a125430c7ddca15110ef9",
     ),
     House(
       id: '8e0f5f9c-af1b-4a8d-b8b0-7b8211a1f0a0',
-      name: "Elephant Sanctuary",
+      name: "Elephant San",
       online: true,
       followers: 2800,
       species: 'Elephant',
       num: 4,
       story:
-          "Elephant Sanctuary provides a safe haven for rescued elephants to live peacefully. Here, elephants form bonds with their caretakers and rediscover the joys of freedom. Visitors to the sanctuary witness the deep emotional connections between elephants and the dedicated staff who care for them.",
+          "Elephant San provides a safe haven for rescued elephants to live peacefully. Here, elephants form bonds with their caretakers and rediscover the joys of freedom. Visitors to the sanctuary witness the deep emotional connections between elephants and the dedicated staff who care for them.",
       avatar:
           "https://images.unsplash.com/photo-1581852017103-68ac65514cf7?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZWxlcGhhbnR8ZW58MHx8MHx8fDA%3D",
-      cover:
-          "https://plus.unsplash.com/premium_photo-1675098496724-65e2d3a972b0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZWxlcGhhbnR8ZW58MHx8MHx8fDA%3D",
+      cover: "https://africanccf.org/wp-content/uploads/2021/02/elephant_collaring_banner.jpg",
       video:
           "https://cdn.pixabay.com/vimeo/577427903/elephant-81760.mp4?width=1280&hash=ead065152c26a1c392c78dcc2e38442c41496525",
     ),
@@ -227,8 +221,7 @@ class DataManager {
           "Tiger Haven is committed to protecting and preserving tiger populations in the wild. Conservationists and researchers work hand in hand to monitor tiger habitats and combat illegal poaching. Through education and advocacy, Tiger Haven aims to ensure a future where tigers can thrive in the wild.",
       avatar:
           "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGlnZXJ8ZW58MHx8MHx8fDA%3D",
-      cover:
-          "https://images.unsplash.com/photo-1615824996195-f780bba7cfab?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGlnZXJ8ZW58MHx8MHx8fDA%3D",
+      cover: "https://timelinecovers.pro/facebook-cover/download/tiger-facebook-cover.jpg",
       video:
           "https://cdn.pixabay.com/vimeo/784164228/tiger-143892.mp4?width=1280&hash=a7e397ff42c323fd72b9119829a2d9db630b4331",
     ),

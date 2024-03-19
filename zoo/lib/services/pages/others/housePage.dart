@@ -49,7 +49,6 @@ class HousePage extends StatelessWidget {
                                   style: const TextStyle(
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black, // Adjust text color as needed
                                   ),
                                 ),
                               ),
@@ -69,13 +68,16 @@ class HousePage extends StatelessWidget {
                 ],
               ),
             ),
-            Text(
-              house.story!,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 4,
-              style: const TextStyle(
-                fontSize: 18,
-                color: Colors.black54,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                house.story!,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.black54,
+                ),
               ),
             ),
             const Gap(15),

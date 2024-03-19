@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:zoo/auth/authPage.dart';
 import 'package:zoo/data/data.dart';
 import 'package:zoo/network/network_request.dart';
-import 'package:zoo/services/models/test.dart';
 import 'firebase_options.dart';
 import 'package:flutter/services.dart';
 
@@ -24,9 +23,10 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  late List<Test> test;
   @override
   void initState() {
+    NetworkRequest.fetchListHouse().then((value) => DataManager.listHouse = value);
+    NetworkRequest.fetchListGift().then((value) => DataManager.listGift = value);
     super.initState();
   }
 
